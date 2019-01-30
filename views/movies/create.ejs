@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </head>
+  <body>
+      <h1>Movies</h1>
+      <!-- <h3><a href="/movies/index">Create Restaurant</a></h3> -->
+    <div class="container">
+            <form class="" action="/movies/save" method="post">
+                Title:<input type="text" name="title"> 
+                <hr>
+                Director:<input type="text" name="director"> 
+                <hr>
+                Genre:<input type="text" name="genre"> 
+                <hr>
+
+                Description:<textarea name="description"></textarea>
+                <hr>
+                Rating:<input type="text" name="rating">
+                <hr>
+                Updated:<input type="text" name="updated_at">
+                <hr>
+            <input type="submit" name="submit movie">
+        </form>
+       
+    </div>
+  </body>
+</html>

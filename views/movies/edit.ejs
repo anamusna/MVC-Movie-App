@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <link rel="stylesheet" href="./css/stayle.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </head>
+  <body>
+      <h1>Edit Movies</h1>
+     
+    <div class="container">
+        <form class="form-group" action="/movies/update/<%=movie._id%>" method="post">
+                Title:<input type="text" value="<%=movie.title %>" name="title"> 
+                <hr>
+                Director:<input type="text" value="<%=movie.director %>" name="director"> 
+                <hr>
+                Genre:<input type="text" value="<%=movie.genre %>" name="genre"> 
+                <hr>
+                Description:<textarea value="<%=movie.description %>" name="description"></textarea>
+                <hr>
+                Rating:<input type="text" value="<%=movie.rating %>" name="rating">
+                <hr>
+                Updated:<input type="text" value="<%=movie.updated_at %>" name="updated_at">
+                <hr>
+            <input type="submit" name="submit movie">
+        </form>
+    </div>
+  </body>
+</html>

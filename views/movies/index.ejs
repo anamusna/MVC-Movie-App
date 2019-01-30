@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<link rel="stylesheet" href="./css/stayle.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <div class="container">
+       <h1>my movies</h1>
+
+       <h3><a href="/movies/create">Create Movies</a></h3>
+
+        <ul>
+        <% for(let i = 0; i < movies.length; i++) { %>    
+            <li><a href="/movies/show/<%= movies[i]._id%>"><%= movies[i].title %></a></li>
+            <li><%= movies[i].director %></li>
+            <li><%= movies[i].genre %></li>
+            <li><%= movies[i].description %></li>
+            <li><%= movies[i].rating %></li>
+            <li><%= movies[i].updated_at %></li>
+        <% } %>
+        </ul>
+
+
+
+    </div>
+  </body>
+</html>
