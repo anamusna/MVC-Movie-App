@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserHead from './UserHead';
 class UserFeed extends Component {
 
   constructor(props) {
@@ -15,6 +16,7 @@ class UserFeed extends Component {
 
     return (
       <div className=" center justify-content-center ">
+        <UserHead />
         <h1>Homepage</h1>
 
 

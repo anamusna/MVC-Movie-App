@@ -1,23 +1,43 @@
-import React from 'react';
-import {BrowserRouter,  Route,  Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Welcome from '././components/Welcome/Welcome';
 import Home from '././components/Home/Home';
 import Login from '././components/Login/Login';
 import Signup from '././components/Signup/Signup';
 import NotFound from '././components/NotFound/NotFound';
+import Movies from "././components/Home/Movies";
+import AddMovie from "././components/Home/AddMovie";
 
 
-const Routes = () => (
-  <BrowserRouter >
-      <Switch>
-          <Route exact path="/" component={Welcome}/>
-          <Route path="/home" component={Home}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/Signup" component={Signup}/>
-          <Route path="*" component={NotFound}/>
-      </Switch>
-  </BrowserRouter>
-);
+class Routes extends React.Component {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            movies: Movies
+        };
+    }
+    render() {
+
+
+        return (
+            <div>
+                <BrowserRouter >
+                    <Switch>
+                        <Route exact path="/" component={Welcome} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/Signup" component={Signup} />
+                        <Route path="/new" component={AddMovie} />
+                        <Route path="*" component={NotFound} />
+                    </Switch>
+                </BrowserRouter >
+            </div>
+
+        );
+    }
+}
 
 export default Routes;

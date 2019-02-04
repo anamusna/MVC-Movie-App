@@ -1,15 +1,17 @@
-import React from "react";
-import MoviesList from "./MoviesList";
-import { BrowserRouter as Redirect } from "react-router-dom";
-import Movies from "./Movies";
+
+import React, { Component } from 'react';
+import './Home.css';
+import MoviesList from "../MoviesPage/MoviesList";
+import { BrowserRouter as  Redirect } from "react-router-dom";
+import Movies from "../MoviesPage/Movies";
 
 
-class Home extends React.Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             movies: Movies
-        };
+          };
     }
 
     onAddMoviePressed = value => {
@@ -24,12 +26,12 @@ class Home extends React.Component {
     };
     render() {
         return (
-
-            <div className="">
-                <MoviesList movies={this.state.movies} />
-
-            </div>
-
+           
+                <div>  
+                    <MoviesList movies={this.state.movies} />}
+                    
+                </div>
+          
         );
     }
 }

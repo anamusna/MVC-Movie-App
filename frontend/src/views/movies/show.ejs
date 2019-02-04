@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <link rel="stylesheet" href="./css/stayle.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">   
+  </head>
+  <body>
+      
+    <div class="container">
+       <h1>movie list</h1>
+        <p><%= movie.title %></p>
+        <p><%= movie.director %></p>
+        <p><%= movie.genre %></p>
+        <p><%= movie.description %></p>
+        <p><%= movie.rating %></p>
+        <p><%= movie.updated_at %></p> 
+        <p><a href="/movies/edit/<%=movie._id%>">Edit Movie</a></p>
+
+       <h3><a href="/movies">Movie List</a></h3>
+       <form action="/movies/delete/<%=movie._id%>" method="post">
+        <button type="submit">delete</button>
+    </form>
+
+    </div>
+  </body>
+</html>

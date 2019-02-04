@@ -31,75 +31,75 @@ class Signup extends Component {
 
     return (
 
-      <div className="center row justify-content-center" id="Body">
-        <div id="tabs" className="medium-5 columns left bm-center-content row">
 
-          <form id="form-login" className="col">
+      <div id="tabs" className="medium-5 columns left bm-center-content row">
 
-            <FormControl fullWidth className="row">
-              <InputLabel>Name</InputLabel>
+        <form id="form-login" className="col">
 
-              <Input
-                id="name"
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                onChange={this.onChange}
-                required
-              />
-            </FormControl>
+          <FormControl fullWidth className="row">
+            <InputLabel>Name</InputLabel>
 
-            <FormControl fullWidth className="row">
-              <InputLabel>Email</InputLabel>
+            <Input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              onChange={this.onChange}
+              required
+            />
+          </FormControl>
 
-              <Input
-                id="email"
-                type="text"
-                name="email"
-                placeholder="email@example.com"
-                onChange={this.onChange}
-                required
-              />
-            </FormControl>
+          <FormControl fullWidth className="row">
+            <InputLabel>Email</InputLabel>
 
-            <FormControl fullWidth className="row">
-              <InputLabel>Username</InputLabel>
+            <Input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="email@example.com"
+              onChange={this.onChange}
+              required
+            />
+          </FormControl>
 
-              <Input
-                id="username"
-                type="text"
-                name="username"
-                placeholder="whats your user name"
-                onChange={this.onChange}
-                required
-              />
-            </FormControl>
+          <FormControl fullWidth className="row">
+            <InputLabel>Username</InputLabel>
 
-            <FormControl fullWidth className="row">
-              <InputLabel>Password</InputLabel>
+            <Input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="whats your user name"
+              onChange={this.onChange}
+              required
+            />
+          </FormControl>
 
-              <Input
-                id="password"
-                type="password"
-                name="password"
-                placeholder="enter password"
-                onChange={this.onChange}
-                required
-              />
-            </FormControl>
-            <Grid item xs={12}>
-              <Button type="submit" variant="extendedFab" className="btn-success"  >
-                Sign Up
+          <FormControl fullWidth className="row">
+            <InputLabel>Password</InputLabel>
+
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="enter password"
+              onChange={this.onChange}
+              required
+            />
+          </FormControl>
+          <Grid item xs={12}>
+            <Button type="submit" variant="extendedFab" className="btn-success"  >
+              Sign Up
 								</Button>
 
-              <a href="/login" className="btn btn-outline-info">Already have an account Login here</a>
-            </Grid>
+            <a href="/login" className="btn btn-outline-info">Already have an account Login here</a>
+          </Grid>
 
-          </form>
-
-        </div>
+        </form>
 
       </div>
+
+
     );
   }
 }
