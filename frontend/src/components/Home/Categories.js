@@ -1,11 +1,11 @@
 let Categories = [
     "all",
     "animation",
-    "hurror",
+    "horror",
     "drama",
-    "Ramance",
+    "Romance",
     "adventure",
-    "science fiction"
+    "sci-fi"
 ];
 
 export default Categories;

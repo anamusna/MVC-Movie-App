@@ -1,5 +1,5 @@
 import React from "react";
-//import "./css/card.css";
+import "./css/card.css";
 import MovieRating from "./MovieRating";
 import { Container } from "reactstrap";
 
@@ -22,11 +22,11 @@ import zIndex from "@material-ui/core/styles/zIndex";
 const styles = theme => ({
 
     card: {
-        margin: "10px auto",
+        margin: "10px",
 
     },
     media: {
-        height: "50%",
+        height: "70%",
         width: "100%",
         backgroundSize: "cover",
         zIndex: -11
@@ -48,46 +48,50 @@ const styles = theme => ({
 });
 
 
+
 class MovieCard extends React.Component {
     state = { expanded: false };
     render() {
         const { classes } = this.props;
         return (
-            <Container>
-                <Card className={classes.card}>
 
-                    <img src={this.props.item.image} alt="MovieImage"
-                        className={classes.media}
-                    />
-                    <CardContent>
-                        <Typography component="p">
-                            <h3>{this.props.item.name}</h3>
+            <Card className={classes.card}>
 
-                            <p > {this.props.item.year}</p>
-                            <p> {this.props.item.category}</p>
+                <img src={this.props.item.image} alt="MovieImage"
+                    className={classes.media}
+                />
+                <CardContent>
+                    <Typography component="p">
+                        <h3 className="card-title">{this.props.item.name}</h3>
 
-                        </Typography>
-                    </CardContent>
-                    <CardContent>
-                        <Typography component="p">
-                            <p > {this.props.item.desc}</p>
-                            <p >
-                                <MovieRating rating={this.props.item.rating} />
-                            </p>
-                        </Typography>
-                    </CardContent>
-                    <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="Add to favorites">
-                            <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="Share">
-                            <ShareIcon />
-                        </IconButton>
 
-                    </CardActions>
 
-                </Card>
-            </Container>
+                    </Typography>
+                </CardContent>
+                <CardContent>
+                    <Typography component="p">
+
+                        <p className="card-desc"> {this.props.item.desc}</p>
+                        <p className="card-date"> {this.props.item.year}</p>
+                        <p className="card-category"> {this.props.item.category}</p>
+                        <p className="card-rating">
+                            <MovieRating rating={this.props.item.rating} />
+                        </p>
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.actions} disableActionSpacing>
+                    <IconButton aria-label="Add to favorites">
+                        <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="Share">
+                        <ShareIcon />
+                    </IconButton>
+
+                </CardActions>
+
+            </Card>
+
+
 
 
 

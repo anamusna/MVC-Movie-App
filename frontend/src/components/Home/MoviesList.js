@@ -77,7 +77,7 @@ class MoviesList extends Component {
     };
     render() {
         return (
-            <Container className="movies-list">
+            <div className="movies-list center row">
                 <div className="categories">
                     <h2 className="categories-title ">Categories</h2>
                     <div className="categories-list">
@@ -116,7 +116,7 @@ class MoviesList extends Component {
 
 
 
-            </Container>
+            </div>
 
 
 
