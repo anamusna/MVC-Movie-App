@@ -8,14 +8,12 @@ padding: 10px;
     justify-content: space-around;
     overflow: visible;
     width: 95vw;
-    border: 1px solid red;
   }
   .movies-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     overflow: visible;
-    border: 1px solid black;
   }
  
   .search-input {
@@ -44,9 +42,9 @@ padding: 10px;
     text-align: center;
     margin-top: 8em;
 
+
   }
   .categories-list {
-
     align-items: center;
     font-weight: 500;
     font-size: 18px;
@@ -55,3 +53,6 @@ padding: 10px;
     text-transform: uppercase;
   }
   
+  .search{
+    margin: auto;
+  }

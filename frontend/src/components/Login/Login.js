@@ -35,6 +35,7 @@ class Login extends Component {
     return (
 
       <div id="tabs" className="medium-5 columns left bm-center-content row">
+
         <form id="form-login" className="col">
 
           <FormControl fullWidth className="row">
@@ -69,7 +70,9 @@ class Login extends Component {
               </a>
           </span>
 
-          <Button type="submit" variant="extendedFab" className="btn-success" onClick={"/home"} >
+          <Button type="submit" variant="extendedFab"
+            className="btn-success"
+          >
             Login
 								</Button>
 
@@ -83,6 +86,9 @@ class Login extends Component {
           </GoogleLoginButton>
           <a href="/signup" className="btn btn-outline-info">You dont have an account sign up here</a>
         </form>
+        <p>
+          <a href="/home" className="btn btn-outline-secondary">Home</a>
+        </p>
       </div>
 
 

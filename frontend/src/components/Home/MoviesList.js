@@ -5,6 +5,8 @@ import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 import Categories from "./Categories";
 import RateFilter from "./RateFilter";
+
+
 let categories = Categories;
 
 class MoviesList extends Component {
@@ -91,7 +93,7 @@ class MoviesList extends Component {
                 </div>
 
 
-                <div className="center">
+                <div className="search center">
                     <input
                         className="search-input"
                         type="text"
@@ -104,10 +106,15 @@ class MoviesList extends Component {
                         add movie
                     </Link>
                 </div>
-                <RateFilter
-                    rating={this.state.minRating}
-                    onChangeRating={newRating => this.changeRating(newRating)}
-                />
+                <div className="rating">
+                    <RateFilter
+                        rating={this.state.minRating}
+                        onChangeRating={newRating => this.changeRating(newRating)}>
+
+                    </RateFilter>
+                </div>
+
+
                 <div className="movies-content">
                     {this.state.movies.map((e, i) => {
                         return <MovieCard item={e} key={i} />;
