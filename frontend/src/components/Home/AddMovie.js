@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/addMovie.css";
+import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Container, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 class AddMovie extends React.Component {
@@ -14,6 +15,17 @@ class AddMovie extends React.Component {
             year: new Date().getFullYear().toString(),
             rating: 0
         };
+    }
+
+
+    componentDidMount(){
+        axios.get(`localhost:3001/api/movies`)
+        .then(res => {
+            console.log('resoen',res);
+
+        })
+       
+        
     }
 
     onChangeName = value => {
@@ -43,13 +55,22 @@ class AddMovie extends React.Component {
     };
 
     onAddMovie(value) {
-        if (!this.state.added) {
+
+
+        console.log('###',value)
+ /*        if (!this.state.added) {
             this.props.movies = this.state.movies.concat(value);
 
             this.added = true;
 
             return <Redirect to="/home" />;
-        }
+           
+        } */
+
+
+        axios.post('localhost:3001/api/movies/create', value)
+        .then(response=>console.log(response))
+      
     }
 
     render() {
@@ -118,6 +139,7 @@ class AddMovie extends React.Component {
                             id="image"
                             onChange={e => this.onChangeImage(e.target.value)}
                         />
+                        <button type="submit" onClick={() => this.onAddMovie(this.state)}>add movie</button>
                         <FormText color="muted">
                             This is some placeholder block-level help text for the above
                             input. It's a bit lighter and easily wraps to a new line.
@@ -127,9 +149,9 @@ class AddMovie extends React.Component {
                     <Link
                         className="add"
                         to="/new"
-                        onClick={() => this.props.addMovieFunction({ ...this.state })}
+                        
                     >
-                        <i class="fas fa-plus" />
+                        <i className="fas fa-plus" />
                     </Link>
                 </Form>
             </Container>

@@ -1,12 +1,21 @@
-const path = require('path')
-const bodyParser = require('body-parser')
-
 const express = require('express')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const path =require('path');
+const cors=require('cors');
+const morgan=require('morgan');
+
+
+
+//set up express app
 const app = express()
 
-const mongoose = require('mongoose')
-const movies = require('./routes/movies')
+app.use(morgan('combined'))
 
+
+
+
+//connect to mongodb
 mongoose
   .connect(`mongodb://localhost:27017/movies`, { useNewUrlParser: true })
   .then(console.log('Successful connection to database'))
@@ -14,17 +23,15 @@ mongoose
     console.log(`The following error occurred: ${error.message}`)
   })
 
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
-  app.use('/movies', movies)
+  //error handling middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.set('views', path.join(__dirname, './views'))
-  app.set('view engine', 'ejs')
+  //routes
+app.use('/api', require('./routes/api'));  
+  //listen for request
 
-  app.get('/', (req, res) => {
-    res.render('index')
-  })
-
-  app.listen(4000, () => {
-    console.log('Listening at port 4000')
+  app.listen(3001, () => {
+    console.log('Listening at port 3001')
   })

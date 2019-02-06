@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+ 
+
 
 const movieSchema = new mongoose.Schema({
     title:{
         type: String,
-        required: '',
+        required: [true, 'Title field is required'],
         unique: true,
         trim: true
     },
@@ -11,7 +13,8 @@ const movieSchema = new mongoose.Schema({
         type: String,
     },
     genre:{
-        type: String
+        type: String,
+        required: [true, 'Genre field is required'],
     },
     description:{
         type: String,
@@ -29,4 +32,5 @@ const movieSchema = new mongoose.Schema({
 
 })
 
-module.exports = movieSchema
+ 
+module.exports =  movieSchema
