@@ -115,11 +115,11 @@ class MoviesList extends Component {
                 </div>
 
 
-                <div className="movies-content">
+                {/* <div className="movies-content">
                     {this.state.movies.map((e, i) => {
                         return <MovieCard item={e} key={i} />;
                     })}
-                </div>
+                </div> */}
 
 
 

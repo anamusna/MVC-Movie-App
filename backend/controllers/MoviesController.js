@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const movieSchema = require('../models/Movies')
 
- const Movie = mongoose.model('Movie', movieSchema)
+const Movie = mongoose.model('Movie', movieSchema)
 
 const movieController = {}
 
@@ -9,11 +9,11 @@ const movieController = {}
 
 //List all movies
 movieController.list = (req,res) => {
-    Movie.find({}).exec((error, movie) => {
+    Movie.find({}).exec((error, movies) => {
         if(error){
             console.log('Error:', error)
         } else {
-            res.send(movie)
+            res.send(movies)
         }
     })
 }
@@ -40,6 +40,18 @@ movieController.save = (req, res)=>{
     })
 }
 
+//show method
+movieController.show = (req, res)=>{
+    Movie.findOne({_id: req.params.id}).exec((error, movie)=>{
+        if(error){
+            console.log('Error:', error)
+        } else {
+            res.send(movie)
+        }
+    
+    })
+}
+
 //update
  movieController.update = (req, res)=>{
     Movie.findByIdAndUpdate(req.params.id, {$set:{
@@ -52,14 +64,30 @@ movieController.save = (req, res)=>{
     }}, { new: true}, (error, movie)=>{
         if(error) {
             console.log(error)
-            res.redirect('/movies/', {movie:req.body})
+            res.send('/movies/edit', {movie:req.body})
                  
         } else{
-           res.redirect(`/movies/${movie._id}`)
+           res.redirect(`/movies/list${movie._id}`)
             
         }
     })
     } 
+  
+    //delete
+  movieController.delete = (req,res)=>{
+    Movie.findByIdAndRemove({_id: req.params.id}, (error) => {
+        if(error) {
+            console.log(error)
+            
+                 
+        } else{
+           console.log('Movie deleted');
+            res.send('movies/list') 
+           
+            
+        }
+    })
+} 
  
 /* movieController.save = (req, res) => {
     let movie = new Movie({

@@ -6,41 +6,37 @@ import { Container, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 class AddMovie extends React.Component {
     constructor(props) {
         super(props);
-        let added = false;
+        /* let added = false; */
         this.state = {
-            name: "",
-            desc: "",
-            category: "",
-            image: "",
-            year: new Date().getFullYear().toString(),
-            rating: 0
+            movies: [],
         };
     }
 
 
     componentDidMount(){
-        axios.get(`localhost:3001/api/movies`)
-        .then(res => {
-            console.log('resoen',res);
-
-        })
-       
+        axios.post('http://localhost:3001/api/movies/list')
+        .then(results =>{
+        console.log(results);
         
+        this.setState({movies: results.data})
+      });
+      console.log(this.state.movies.results);
+      
     }
 
     onChangeName = value => {
         this.setState({
-            name: value
+            title: value
         });
     };
     onChangeDesc = value => {
         this.setState({
-            desc: value
+            description: value
         });
     };
     onChangeCat = value => {
         this.setState({
-            category: value
+            genre: value
         });
     };
     onChangeRating = value => {
@@ -57,18 +53,7 @@ class AddMovie extends React.Component {
     onAddMovie(value) {
 
 
-        console.log('###',value)
- /*        if (!this.state.added) {
-            this.props.movies = this.state.movies.concat(value);
-
-            this.added = true;
-
-            return <Redirect to="/home" />;
-           
-        } */
-
-
-        axios.post('localhost:3001/api/movies/create', value)
+        axios.post('http://localhost:3001/api/movies/list', value)
         .then(response=>console.log(response))
       
     }
@@ -77,7 +62,7 @@ class AddMovie extends React.Component {
         return (
             <Container>
                 <h1>Add your movie here</h1>
-                <Form>
+                <Form action="/movies/list" method="post">
                     <FormGroup>
                         <Label for="name">Name</Label>
                         <Input
