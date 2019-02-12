@@ -1,134 +1,33 @@
-import React, { Component } from "react";
-import "./css/MoviesList.css";
-import { Container } from "reactstrap";
-import MovieCard from "./MovieCard";
-import { Link } from "react-router-dom";
-import Categories from "./Categories";
-import RateFilter from "./RateFilter";
-
-
-let categories = Categories;
+import React, { Component } from 'react';
+import './css/MoviesList.css';
+import MovieCard from './MovieCard';
+import axios from 'axios';
 
 class MoviesList extends Component {
-    constructor(props) {
-        super(props);
-        this.changeRating = this.changeRating.bind(this);
-        this.searchByCategory.bind(this);
-        this.searchByName.bind(this);
-        this.state = {
-            movies: this.props.movies,
-            minRating: 0,
-            newRating: undefined,
-            name: undefined
-        };
-    }
-    name;
-    newRating;
-    filter() {
-        return this.name && this.newRating
-            ? this.setState({
-                movies: this.props.movies.filter(
-                    el =>
-                        el.rating >= this.newRating &&
-                        el.name.toLowerCase().includes(this.name)
-                )
-            })
-            : this.name
-                ? this.setState({
-                    movies: this.props.movies.filter(el =>
-                        el.name.toLowerCase().includes(this.name)
-                    )
-                })
-                : this.newRating
-                    ? this.setState({
-                        movies: this.props.movies.filter(
-                            el => el.rating >= this.newRating
-                        )
-                    })
-                    : this.setState({
-                        movies: this.props.movies
-                    });
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			movies : []
+		};
+	}
 
-    changeRating = newRating => {
-        this.newRating = newRating;
-        this.setState({
-            minRating: newRating,
-            newRating: newRating
-        });
-        this.filter();
-    };
-    searchByName = value => {
-        console.log(value);
-        this.name = value;
-        this.setState({
-            name: value.toLowerCase()
-        });
-        this.filter();
-    };
+	componentDidMount() {
+		axios.get('http://localhost:3001/api/movies/list').then((results) => {
+			console.log(results);
 
-    searchByCategory = value => {
-        this.setState({
-            minRating: 0,
-            movies: !value.includes("all")
-                ? this.props.movies.filter(
-                    el => String(el.category).toLowerCase() === value.toLowerCase()
-                )
-                : this.props.movies
-        });
-    };
-    render() {
-        return (
-            <div className="movies-list center row">
-                <div className="categories">
-                    <h2 className="categories-title ">Categories</h2>
-                    <div className="categories-list">
-                        {categories.map((el, i) => (
-                            <p key={i} onClick={e => this.searchByCategory(el)}>
-                                {el}
-                            </p>
-                        ))}
-                    </div>
-
-                </div>
-
-
-                <div className="search center">
-                    <input
-                        className="search-input"
-                        type="text"
-                        placeholder="Search your movie..."
-                        onChange={e => this.searchByName(e.target.value)}
-                    />
-
-                    <Link to="/new" className=" btn btn-outline-secondary add">
-
-                        add movie
-                    </Link>
-                </div>
-                <div className="rating">
-                    <RateFilter
-                        rating={this.state.minRating}
-                        onChangeRating={newRating => this.changeRating(newRating)}>
-
-                    </RateFilter>
-                </div>
-
-
-                {/* <div className="movies-content">
-                    {this.state.movies.map((e, i) => {
-                        return <MovieCard item={e} key={i} />;
-                    })}
-                </div> */}
-
-
-
-            </div>
-
-
-
-        );
-    }
+			this.setState({ movies: results.data });
+		});
+		console.log(this.state.movies.results);
+	}
+	render() {
+		return (
+			<div className="movies-list center row">
+				{this.state.movies.map((movie, index) => {
+					return <MovieCard movie={movie} key={index} />;
+				})}
+			</div>
+		);
+	}
 }
 
 export default MoviesList;

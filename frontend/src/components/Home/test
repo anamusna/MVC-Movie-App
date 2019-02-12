@@ -1,0 +1,10 @@
+	<a
+						title={movie.title}
+						description={movie.description}
+						rating={movie.rating}
+						genre={movie.genre}
+						year={movie.year}
+						image={movie.image}
+						updated={movie.updated_at}
+						director={movie.director}
+					/>
