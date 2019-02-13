@@ -1,58 +1,44 @@
+.movies-list {
+	display: flex;
+	margin: auto;
+	width: 95vw;
+}
 
-  .movies-list {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-padding: 10px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    overflow: visible;
-    width: 95vw;
-  }
-  .movies-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    overflow: visible;
-  }
- 
-  .search-input {
-    padding: 10px;
-    outline: thin;
-    border: 1px solid gray;
-    min-width: 40vw;
-    text-transform: uppercase;
-  }
-  input {
-    text-indent: 10px;
-    font-weight: 100;
-  }
-  .add {
-    padding: 10px;
-    margin: 0 3px;
-  }
-  
-  .add:hover {
-    transform: scale(1.05);
-  }
-  
-  .categories {
-    width: 20vw;
-    border-right: 1px solid rgb(202, 190, 190);
-    text-align: center;
-    margin-top: 8em;
+.search-input {
+	padding: 10px;
+	outline: thin;
+	border: 1px solid gray;
+	min-width: 40vw;
+	text-transform: uppercase;
+}
+input {
+	text-indent: 10px;
+	font-weight: 100;
+}
+.add {
+	padding: 10px;
+	margin: 0 3px;
+}
 
+.add:hover {
+	transform: scale(1.05);
+}
 
-  }
-  .categories-list {
-    align-items: center;
-    font-weight: 500;
-    font-size: 18px;
-    padding: 10px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-  
-  .search{
-    margin: auto;
-  }
+.categories {
+	width: 20vw;
+	border-right: 1px solid rgb(202, 190, 190);
+	text-align: center;
+	margin-top: 8em;
+}
+.categories-list {
+	align-items: center;
+	font-weight: 500;
+	font-size: 18px;
+	padding: 10px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.search {
+	margin: auto;
+}

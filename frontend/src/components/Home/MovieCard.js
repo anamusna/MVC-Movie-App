@@ -7,13 +7,18 @@ class MovieCard extends React.Component {
 			<div className="card">
 				<div className="card-content">
 					<h3 className="card-title">{this.props.movie.title}</h3>
-
-					<p className="card-desc"> {this.props.movie.description}</p>
-					<p className="card-date"> {this.props.movie.year}</p>
-					<p className="card-genre"> {this.props.movie.genre}</p>
-					<p className="card-rating">{this.props.movie.rating} </p>
-					<p className="card-director">{this.props.movie.director} </p>
-					<p className="card-updated">{this.props.movie.updated_at} </p>
+					<div
+						className="movie-picture"
+						style={{
+							backgroundImage : `url('${this.props.movie.image}')`
+						}}
+					/>
+					<div className="card-desc"> {this.props.movie.description}</div>
+					<div className="card-date"> {this.props.movie.year}</div>
+					<div className="card-genre"> {this.props.movie.genre}</div>
+					<div className="card-rating">{this.props.movie.rating} </div>
+					<div className="card-director">{this.props.movie.director} </div>
+					<div className="card-updated">{this.props.movie.updated_at} </div>
 				</div>
 			</div>
 		);

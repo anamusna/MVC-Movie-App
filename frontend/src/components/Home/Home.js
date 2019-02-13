@@ -3,8 +3,6 @@ import MoviesList from './MoviesList';
 import './css/home.css';
 import UserHead from '../Header/UserHead';
 
-//
-
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,8 +20,6 @@ class Home extends React.Component {
         );
     }; */
 	render() {
-		let movies = this.state.movies;
-
 		return (
 			<div className="center">
 				<UserHead />

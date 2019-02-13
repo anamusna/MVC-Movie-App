@@ -79,15 +79,24 @@ class AddMovie extends React.Component {
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for="genre">Category</Label>
+						<Label for="genre">Genre</Label>
 						<Input
 							required
-							type="text"
+							type="select"
 							name="genre"
 							id="genre"
-							placeholder="movie category"
 							onChange={(e) => this.onChangeCat(e.target.value)}
-						/>
+						>
+							<option>Action</option>
+							<option>Drama</option>
+							<option>Romance</option>
+							<option>Thriller</option>
+							<option>Animation</option>
+							<option>Sci-Fi</option>
+							<option>Horror</option>
+
+							<option>Adventure</option>
+						</Input>
 					</FormGroup>
 					<FormGroup>
 						<Label for="rating">Rating</Label>

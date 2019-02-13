@@ -9,7 +9,7 @@ import NotFound from '././components/NotFound/NotFound';
 
 import AddMovie from '././components/Home/AddMovie';
 
-class Routes extends React.Component {
+class Routes extends Component {
 	render() {
 		return (
 			<div>
