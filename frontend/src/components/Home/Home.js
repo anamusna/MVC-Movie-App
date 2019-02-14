@@ -2,6 +2,7 @@ import React from 'react';
 import MoviesList from './MoviesList';
 import './css/home.css';
 import UserHead from '../Header/UserHead';
+import SearchBar from './SearchBar';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -21,9 +22,10 @@ class Home extends React.Component {
     }; */
 	render() {
 		return (
-			<div className="center">
+			<div className="App">
 				<UserHead />
 				<h2 id="welcomeText">AFTER LOGIN/SIGNUP</h2>
+				<SearchBar />
 				<MoviesList />
 			</div>
 		);

@@ -15,7 +15,7 @@ class Welcome extends Component {
 
 	render() {
 		return (
-			<div className="center">
+			<div className="App">
 				<Header />
 				<h2 id="welcomeText">Welcome to the Movie Store</h2>
 
