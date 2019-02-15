@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 
 const movieSchema = new mongoose.Schema({
+
     title:{
         type: String,
         required: [true, 'Title field is required'],
@@ -23,12 +24,13 @@ const movieSchema = new mongoose.Schema({
     rating:{
         type: Number,
     },
+    image:{
+        type:String,
+    },
     updated_at:{
         type: Date,
         default: Date.now
     }
-
-
 
 })
 

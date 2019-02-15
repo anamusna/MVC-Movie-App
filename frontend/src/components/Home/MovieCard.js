@@ -6,19 +6,27 @@ class MovieCard extends React.Component {
 		return (
 			<div className="card">
 				<div className="card-content">
-					<h3 className="card-title">{this.props.movie.title}</h3>
-					<div
+				
+					<h3 className="card-title">Title:<a href=""> {this.props.movie.title}</a></h3>
+					<hr/>
+					{/* <div
 						className="movie-picture"
 						style={{
 							backgroundImage : `url('${this.props.movie.image}')`
 						}}
-					/>
-					<div className="card-desc"> {this.props.movie.description}</div>
-					<div className="card-date"> {this.props.movie.year}</div>
-					<div className="card-genre"> {this.props.movie.genre}</div>
-					<div className="card-rating">{this.props.movie.rating} </div>
-					<div className="card-director">{this.props.movie.director} </div>
-					<div className="card-updated">{this.props.movie.updated_at} </div>
+					/> */}
+					<hr/>
+					<div className="card-desc">Director: {this.props.movie.director}</div>
+					<hr/>
+					<div className="card-date">Genre: {this.props.movie.genre}</div>
+					<hr/>
+					<div className="card-genre">Description:  {this.props.movie.description}</div>
+					<hr/>
+					<div className="card-rating">Rating: {this.props.movie.rating} </div>
+					<hr/>
+					<div className="card-director">image:{this.props.movie.image} </div>
+					<hr/>
+					<div className="card-updated">Updated: {this.props.movie.updated_at} </div>
 				</div>
 			</div>
 		);

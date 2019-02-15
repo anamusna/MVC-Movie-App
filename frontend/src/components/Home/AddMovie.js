@@ -13,7 +13,7 @@ class AddMovie extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.post('http://localhost:3001/api/movies/list').then((results) => {
+		axios.post('http://localhost:3001/api/movies/new').then((results) => {
 			console.log(results);
 
 			this.setState({ movies: results.data });
@@ -48,7 +48,7 @@ class AddMovie extends React.Component {
 	};
 
 	onAddMovie(value) {
-		axios.post('http://localhost:3001/api/movies/list', value).then((response) => console.log(response));
+		axios.post('http://localhost:3001/api/movies/new', value).then((response) => console.log(response));
 	}
 
 	render() {
