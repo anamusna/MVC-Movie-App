@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './Signup.css';
 
@@ -9,22 +10,54 @@ class Signup extends Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-      name: '',
+     users:[]
     };
 
 
   }
 
-  onChange(e) {
+  componentDidMount() {
+		axios.post('http://localhost:3001/api/users/new').then((results) => {
+			console.log(results);
 
-    console.log(e.target.value);
-  }
+			this.setState({ users: results.data });
+			console.log(this.state.users);
+		});
+		
+	}
 
+  onChangeName=(value) => {
+      this.setState({
+			  name : value
+		});
+    
+  };
 
+  onChangeEmail=(value) => {
+    this.setState({
+      email : value
+    });
+  
+  };
 
+  onChangeUser=(value) => {
+    this.setState({
+      username : value
+    });
+  
+  };
+
+  onChangePassWord=(value) => {
+    this.setState({
+      password : value
+    });
+  
+  };
+
+  addUser(value){
+    axios.post('http://localhost:3001/api/users/new', value).then((response) => console.log(response));
+	}
+  
 
 
   render() {
@@ -88,7 +121,7 @@ class Signup extends Component {
             />
           </FormControl>
           <Grid item xs={12}>
-            <Button type="submit" variant="extendedFab" className="btn-success"  >
+            <Button type="submit" variant="extendedFab" className="btn-success" onClick={() => this.addUser(this.state)} >
               Sign Up
 								</Button>
 

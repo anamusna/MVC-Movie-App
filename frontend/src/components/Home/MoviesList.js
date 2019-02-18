@@ -7,24 +7,34 @@ class MoviesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			movies : []
+			movies : [],
+			
 		};
 	}
 
 	componentDidMount() {
 		axios.get('http://localhost:3001/api/movies/list').then((results) => {
-			console.log(results);
+			
 
 			this.setState({ movies: results.data });
-			console.log(this.state.movies);
+		
 		});
+		
+		
 	}
 	render() {
+
 		return (
 			<div className="movies-list">
 				<div className="all-movies-list">
-					{this.state.movies.map((movie, index) => {
-						return <MovieCard movie={movie} key={index} />;
+				
+				{this.state.movies.map((movie, index) => {
+						return (
+							<div>	
+							<MovieCard movie={movie} key={index} />
+							</div>
+						)
+						
 					})}
 				</div>
 			</div>

@@ -18,13 +18,13 @@ app.get('/', (req, res)=>{
 app.use(morgan('combined'));
 
 //cookies
-app.use(cookieParser());
+ app.use(cookieParser());
 
 app.get('/', (req, res)=>{
   res.cookie('session_id', '12888u934kjn445pe7rgj',{
     expires: new Date(Date.now() + 800000)
   })
-})
+}) 
 
 
 
@@ -38,7 +38,7 @@ mongoose
     console.log(`The following error occurred: ${error.message}`)
   })
 //images
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('./uploads/'));
 
 
   //error handling middleware

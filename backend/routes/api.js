@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const multer = require ('multer');
+//const multer = require ('multer');
 
 const cors = require('cors');
 
 const movieController = require('../controllers/MoviesController.js');
+const upload = require('../handlers/multer')
 
- const storage = multer.diskStorage({
+/*  const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
         cb(null, './uploads/');
     },
@@ -17,7 +18,8 @@ const movieController = require('../controllers/MoviesController.js');
 
  const fileFilter = (req, file, cb)=>{
     //reject file
-    if (file.mimetype ===  file.mimetype === 'image/jpg' || file.mimetype === 'image/png' ) {
+    
+    if (file.mimetype === 'image/jpg' || file.mimetype === 'image/png' ) {
         cb(null, true)   
     } else{
         cb(null, false)
@@ -29,11 +31,13 @@ const movieController = require('../controllers/MoviesController.js');
 
  const upload = multer({storage: storage, 
     limits:{
-            fileSize: 1024 * 1024 *5
+            fileSize: 1024 * 1024 * 5
         },
-       /*  fileFilter: fileFilter */
+        /* fileFilter: fileFilter   
 
-}); 
+});  */
+
+
 //get a list of movies
 router.get('/movies/list', cors(), movieController.list);
 

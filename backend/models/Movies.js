@@ -25,7 +25,7 @@ const movieSchema = new mongoose.Schema({
         type: Number,
     },
     image:{
-        type:String,
+        
     },
     updated_at:{
         type: Date,

@@ -8,20 +8,22 @@ class AddMovie extends React.Component {
 		super(props);
 		/* let added = false; */
 		this.state = {
-			movies : []
+			title: '',
+			description: '',
+			genre: '',
+			rating: 0,
+			image: null
 		};
+		console.log(this.state.rating)
 	}
 
-	componentDidMount() {
-		axios.post('http://localhost:3001/api/movies/new').then((results) => {
-			console.log(results);
-
-			this.setState({ movies: results.data });
-		});
-		console.log(this.state.movies.results);
+	
+	onChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value })
 	}
 
-	onChangeName = (value) => {
+
+/* 	onChangeName = (value) => {
 		this.setState({
 			title : value
 		});
@@ -35,27 +37,57 @@ class AddMovie extends React.Component {
 		this.setState({
 			genre : value
 		});
-	};
+	}; */
 	onChangeRating = (value) => {
+		let num = Number.parseInt(value)
+		console.log(num)
 		this.setState({
-			rating : value
+			rating : num
 		});
 	};
-	onChangeImage = (value) => {
+	onChangeImage = (e) => {
+		console.log(e.target.files[0])
 		this.setState({
-			image : value
+			image : e.target.files[0]
 		});
-	};
+	};  
 
-	onAddMovie(value) {
-		axios.post('http://localhost:3001/api/movies/new', value).then((response) => console.log(response));
-	}
+	onAddMovie() {
+		axios.post('http://localhost:3001/api/movies/new').then((response) => console.log(response));
+		
+	}; 
+	
+	
+	onFormSubmit=(e)=>{
+		e.preventDefault();
+		
+		const formData = new FormData();
+		formData.append('image', this.state.image);
+		formData.append('title', this.state.title);
+		formData.append('description',  this.state.description );
+		formData.append('genre', this.state.genre );
+		formData.append('rating', this.state.rating);
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data'
+			}
+		};
+		console.log(formData, this.state)
+		axios.post('http://localhost:3001/api/movies/new', formData, config)
+           .then((response) => {
+               alert(response,'The file is successfully uploaded');
+           }).catch((error) => { console.log(error)
+       });
+   }
+
+	
 
 	render() {
+		const { title, description, genre, rating } = this.state
 		return (
 			<Container>
 				<h1>Add your movie here</h1>
-				<Form>
+				<Form onSubmit={this.onFormSubmit}>
 					<FormGroup>
 						<Label for="title">Name</Label>
 						<Input
@@ -63,8 +95,9 @@ class AddMovie extends React.Component {
 							type="text"
 							name="title"
 							id="title"
+							value={title}
 							placeholder="Movie name"
-							onChange={(e) => this.onChangeName(e.target.value)}
+							onChange={this.onChange}
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -74,8 +107,9 @@ class AddMovie extends React.Component {
 							type="textarea"
 							name="description"
 							id="description"
+							value={description}
 							placeholder="movie description"
-							onChange={(e) => this.onChangeDesc(e.target.value)}
+							onChange={this.onChange}
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -85,7 +119,8 @@ class AddMovie extends React.Component {
 							type="select"
 							name="genre"
 							id="genre"
-							onChange={(e) => this.onChangeCat(e.target.value)}
+							value={genre}
+							onChange={this.onChange}
 						>
 							<option>Action</option>
 							<option>Drama</option>
@@ -105,7 +140,8 @@ class AddMovie extends React.Component {
 							type="select"
 							name="rating"
 							id="rating"
-							onChange={(e) => this.onChangeRating(e.target.value)}
+							value={rating}
+							onChange={this.onChange}
 						>
 							<option>0</option>
 							<option>1</option>
@@ -120,13 +156,13 @@ class AddMovie extends React.Component {
 						<Label for="image">File</Label>
 						<Input
 							required
-							type="text"
+							type="file"
 							name="image"
 							placeholder="url of your image"
 							id="image"
-							onChange={(e) => this.onChangeImage(e.target.value)}
+							onChange={this.onChangeImage} 
 						/>
-						<button type="button" onClick={() => this.onAddMovie(this.state)}>
+						<button type="submit">
 							add movie
 						</button>
 						<FormText color="muted">
@@ -145,3 +181,6 @@ class AddMovie extends React.Component {
 }
 
 export default AddMovie;
+
+
+

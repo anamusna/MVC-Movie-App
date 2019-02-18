@@ -23,8 +23,9 @@ userController.list = (req,res) => {
 userController.save = (req, res)=>{
     
      let user = new User({
-        username: req.body.username,
+        name: req.body.username,
         email: req.body.email,
+        username: req.body.username,
         password: req.body.password
         
     }) 
@@ -55,8 +56,9 @@ userController.show = (req, res)=>{
 //update
  userController.update = (req, res)=>{
     User.findByIdAndUpdate(req.params.id, {$set:{
-        username:req.body.username,
+        name: req.body.username,
         email: req.body.email,
+        username: req.body.username,
         password: req.body.password,
         updated_at: req.body.updated_at
     }}, { new: true}, (error, user)=>{

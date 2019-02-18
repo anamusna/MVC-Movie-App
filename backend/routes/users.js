@@ -10,14 +10,14 @@ router.get('/users/list', cors(), userController.list);
 //add a new users to DB
 router.post('/users/new', cors(), userController.save);
  
-//show a movie
+//show a user
 router.get('/users/:id', cors(), userController.show);
   
 //update a users in the DB
 
 router.put('/users/:id', cors(), userController.update);
 
-//delete a movie in the DB
+//delete a user in the DB
 router.delete('/users/:id', cors(), userController.delete);
 
 

@@ -2,8 +2,21 @@ const mongoose = require('mongoose');
 const movieSchema = require('../models/Movies');
 
 
+
+
+
 const Movie = mongoose.model('Movie', movieSchema)
 
+/* require('dotenv').config()
+const cloudinary = require('cloudinary')
+
+//configure cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+})
+ */
 
 const movieController = {}
 
@@ -23,7 +36,7 @@ movieController.list = (req,res) => {
 
 // create method
 movieController.save = (req, res)=>{
-    console.log(req.file);
+    console.log(req.body);
     
      let movie = new Movie({
         title: req.body.title,

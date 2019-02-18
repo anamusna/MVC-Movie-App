@@ -9,6 +9,13 @@
 	background-color: #00000090;
 }
 
+.card-director{
+width: 300px !important;
+height: auto !important;
+border: 1px solid red !important
+;
+}
+
 .card-content {
 	display: flex;
 	flex-wrap: wrap;
