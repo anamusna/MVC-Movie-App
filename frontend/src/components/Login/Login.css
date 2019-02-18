@@ -1,3 +1,9 @@
-form a{
-    margin: 10px auto;
+form a {
+	margin: 10px auto;
+}
+.social-login {
+	margin: 10px auto;
+	padding-top: 10px !important;
+	justify-content: space-around;
+	border: 1px solid red !important;
 }
