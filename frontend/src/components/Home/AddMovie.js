@@ -2,7 +2,7 @@ import React from 'react';
 import './css/addMovie.css';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 class AddMovie extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,7 +13,7 @@ class AddMovie extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.post('http://localhost:3001/api/movies/new').then((results) => {
+		axios.post('http://localhost:3001/api/movies/list').then((results) => {
 			console.log(results);
 
 			this.setState({ movies: results.data });
@@ -41,29 +41,31 @@ class AddMovie extends React.Component {
 			rating : value
 		});
 	};
+
+	/*
 	onChangeImage = (value) => {
 		this.setState({
 			image : value
 		});
 	};
-
+*/
 	onAddMovie(value) {
-		axios.post('http://localhost:3001/api/movies/new', value).then((response) => console.log(response));
+		axios.post('http://localhost:3001/api/movies/list', value).then((response) => console.log(response));
 	}
 
 	render() {
 		return (
-			<Container>
+			<Container className="">
 				<h1>Add your movie here</h1>
 				<Form>
 					<FormGroup>
-						<Label for="title">Name</Label>
+						<Label for="title">Title</Label>
 						<Input
 							required
 							type="text"
 							name="title"
 							id="title"
-							placeholder="Movie name"
+							placeholder="Movie title"
 							onChange={(e) => this.onChangeName(e.target.value)}
 						/>
 					</FormGroup>
@@ -94,7 +96,7 @@ class AddMovie extends React.Component {
 							<option>Animation</option>
 							<option>Sci-Fi</option>
 							<option>Horror</option>
-
+							<option>Comedy</option>
 							<option>Adventure</option>
 						</Input>
 					</FormGroup>
@@ -117,24 +119,18 @@ class AddMovie extends React.Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Label for="image">File</Label>
-						<Input
-							required
-							type="text"
-							name="image"
-							placeholder="url of your image"
-							id="image"
-							onChange={(e) => this.onChangeImage(e.target.value)}
-						/>
-						<button type="button" onClick={() => this.onAddMovie(this.state)}>
+						<Label for="file">File</Label>
+						<Input required type="file" name="file" id="file" />
+					</FormGroup>
+					<FormGroup>
+						<button
+							type="button"
+							className="btn btn-outline-primary"
+							onClick={() => this.onAddMovie(this.state)}
+						>
 							add movie
 						</button>
-						<FormText color="muted">
-							This is some placeholder block-level help text for the above input. It's a bit lighter and
-							easily wraps to a new line.
-						</FormText>
 					</FormGroup>
-
 					<Link className="add" to="/new">
 						<i className="fas fa-plus" />
 					</Link>

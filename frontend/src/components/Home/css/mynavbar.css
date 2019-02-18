@@ -1,26 +1,34 @@
-.navbar {
-    display: flex;
-    align-content: center;
-    margin-block-end: 2%;
-    background-color: #2ecc71;
-    width: 100vw;
-    border: 1px solid black;
-  }
-  .nav-links {
-    padding: 2px 20px;
-    display: flex;
-    align-items: center;
-  }
-  .NavLink {
-    color: white;
-    padding: 2px 10px;
-    text-decoration: none;
-  }
-  .NavLink:focus {
-    color: white;
-  }
-  .NavLink:hover {
-    color: white;
-    text-decoration: none;
-  }
-  
+.Sidebar .SidebarOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	z-index: 99;
+	background-color: black;
+	transition: opacity 300ms ease-in-out, width 0ms 300ms, height 0ms 300ms;
+}
+.Sidebar .SidebarContent {
+	position: fixed;
+	z-index: 100;
+	background-color: white;
+	transition: 300ms ease-in-out;
+	transition-property: left, right, top, bottom;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+.Sidebar.is-open .SidebarOverlay {
+	width: 50%;
+	height: 100%;
+	opacity: 0.25;
+	transition: opacity 300ms ease-in-out, width 0ms, height 0ms;
+}
+.Sidebar.is-open .SidebarContent {
+	left: 0 !important;
+}
+.Sidebar.is-open .SidebarContent.is-right {
+	left: auto !important;
+	right: 0 !important;
+}

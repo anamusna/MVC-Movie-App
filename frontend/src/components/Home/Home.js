@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesList from './MoviesList';
 import './css/home.css';
 import UserHead from '../Header/UserHead';
-import SearchBar from './SearchBar';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -24,8 +24,12 @@ class Home extends React.Component {
 		return (
 			<div className="App">
 				<UserHead />
+
 				<h2 id="welcomeText">AFTER LOGIN/SIGNUP</h2>
-				<SearchBar />
+				<Link className="add" to="/new">
+					add
+					<i className="fas fa-plus" />
+				</Link>
 				<MoviesList />
 			</div>
 		);
