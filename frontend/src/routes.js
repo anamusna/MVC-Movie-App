@@ -6,38 +6,26 @@ import Home from '././components/Home/Home';
 import Login from '././components/Login/Login';
 import Signup from '././components/Signup/Signup';
 import NotFound from '././components/NotFound/NotFound';
-import Movies from "././components/Home/Movies";
-import AddMovie from "././components/Home/AddMovie";
 
+import AddMovie from '././components/Home/AddMovie';
 
-class Routes extends React.Component {
-
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            movies: Movies
-        };
-    }
-    render() {
-
-
-        return (
-            <div>
-                <BrowserRouter >
-                    <Switch>
-                        <Route exact path="/" component={Welcome} />
-                        <Route path="/home" component={Home} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/Signup" component={Signup} />
-                        <Route path="/new" component={AddMovie} />
-                        <Route path="*" component={NotFound} />
-                    </Switch>
-                </BrowserRouter >
-            </div>
-
-        );
-    }
+class Routes extends Component {
+	render() {
+		return (
+			<div>
+				<BrowserRouter>
+					<Switch>
+						<Route exact path="/" component={Welcome} />
+						<Route path="/home" component={Home} />
+						<Route path="/login" component={Login} />
+						<Route path="/Signup" component={Signup} />
+						<Route path="/new" component={AddMovie} />
+						<Route path="*" component={NotFound} />
+					</Switch>
+				</BrowserRouter>
+			</div>
+		);
+	}
 }
 
 export default Routes;

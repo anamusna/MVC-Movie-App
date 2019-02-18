@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-
+import "./css/MoviesList.css";
 class Stars extends Component {
     stars = [1, 2, 3, 4, 5];
     render() {
         let callback = this.props.onClickStar ? this.props.onClickStar : () => { };
         return (
-            <span>
+            <div className="stars">
                 {Array.from(
                     { length: 5 },
                     (el, i) =>
@@ -19,7 +19,7 @@ class Stars extends Component {
                                 </span>
                             )
                 )}
-            </span>
+            </div>
         );
     }
 }

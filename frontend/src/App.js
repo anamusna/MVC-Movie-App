@@ -18,8 +18,8 @@ class App extends Component {
 
   render() {
     return (
-
-      <div className="row center justify-content-center" name={this.state.appName}>
+      <div className="row center justify-content-center"
+        name={this.state.appName}>
         <Routes />
         <Footer />
       </div>

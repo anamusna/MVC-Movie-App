@@ -1,92 +1,61 @@
 .card {
-    font-family: Roboto;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.16),
-      0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    height: 400px;
-    width: 300px;
-  }
-  
-  .card:hover {
-    box-shadow: 0px 0px 50px #00000090;
-    transition: all 200ms ease-in;
-    transform: scale(1.03);
-  }
-  .card:hover .card-content {
-    display: flex;
-    top: 60%;
-  }
-  .card-img-contianer {
-    background-color: aqua;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    background-size: contain;
-  }
-  
-  .card-img {
-    position: relative;
-    max-width: 300px;
-    object-fit: cover;
-    height: 400px;
-    width: 300px;
-  }
-  
-  .card-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    background-color: #00000090;
-    background-size: cover;
-    color: white;
-    width: 100%;
-    height: 40%;
-    transition: all 6s ease-in;
-    z-index: 1000;
-  }
-  .card-title {
-    position: absolute;
-    padding-left: 2px;
-    text-transform: uppercase;
-  }
-  .card-desc {
-    position: absolute;
-    padding-left: 2px;
-    top: 2rem;
-  }
-  .card-date {
-    position: absolute;
-    padding-left: 2px;
-    top: 6rem;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-  }
-  .card-category {
-    position: absolute;
-    padding-left: 2px;
-    top: 8.5rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: yellow;
-  }
-  .card-rating {
-    position: absolute;
-    top: 8.5em;
-    right: 0em;
-    display: flex;
-    text-transform: uppercase;
-  }
-  .white {
-    color: whitesmoke;
-  }
-  .yellow {
-    color: rgb(228, 228, 36);
-  }
-  .rating {
-    display: flex;
-    letter-spacing: 5px;
-  }
-  
+	border: 2px solid black;
+	width: 330px;
+	height: 400px;
+	position: relative;
+	margin: 10px auto;
+	display: flex;
+	flex-direction: column;
+	background-color: #00000090;
+}
+
+.card-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	overflow: visible;
+	background-size: cover;
+	color: white;
+
+	transition: all 6s ease-in;
+	z-index: 1000;
+}
+
+.card-content:hover {
+	transition: all 200ms ease-in;
+	transform: scale(1.03);
+}
+
+.card-title {
+	padding-left: 2px;
+	text-transform: uppercase;
+}
+.card-desc {
+	padding-left: 2px;
+	top: 2rem;
+}
+.card-date {
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}
+.card-category {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: tomato;
+}
+.card-rating {
+	position: absolute;
+	top: 8.5em;
+	display: flex;
+	text-transform: uppercase;
+	border: 1px solid red;
+}
+.white {
+	color: whitesmoke;
+}
+.yellow {
+	color: rgb(228, 228, 36);
+}
+.rating {
+	letter-spacing: 5px;
+}

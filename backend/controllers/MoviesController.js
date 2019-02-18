@@ -1,108 +1,102 @@
-const mongoose = require('mongoose')
-const movieSchema = require('../models/Movies')
+const mongoose = require('mongoose');
+const movieSchema = require('../models/Movies');
+
 
 const Movie = mongoose.model('Movie', movieSchema)
 
+
 const movieController = {}
 
-//List all movies
-movieController.list = (req, res) => {
-    Movie.find({}).exec((error, movie) => {
-        if (error) {
-            console.log('Error:', error)
 
+
+
+//List all movies
+movieController.list = (req,res) => {
+    Movie.find({}).exec((error, movies) => {
+        if(error){
+            console.log('Error:', error)
         } else {
-            res.render('../views/movies/index', { movies: movie })
+            res.send(movies)
         }
     })
 }
 
 // create method
-movieController.create = (req, res) => {
-    res.render('../views/movies/create')
-}
-
-movieController.save = (req, res) => {
-    let movie = new Movie({
+movieController.save = (req, res)=>{
+    console.log(req.file);
+    
+     let movie = new Movie({
         title: req.body.title,
         director: req.body.director,
         genre: req.body.genre,
         description: req.body.description,
         rating: req.body.rating,
-        updated_at: req.body.updated_at
+        image: req.file.path 
+        
+    }) 
 
-    })
-    movie.save((error) => {
-        if (error) {
+    movie.save((error)=>{
+        if(error) {
             console.log(error)
-            res.render('movies/create')
-        } else {
+            res.send(error)      
+        } else{
             console.log('Movie was created');
-            res.redirect(`/movies/show/{movie._id}`)
-
+            res.send(movie)          
         }
     })
+   
 }
 
-//show
-movieController.show = (req, res) => {
-    Movie.findOne({ _id: req.params.id }).exec((error, movie) => {
-        if (error) {
+
+//show method
+movieController.show = (req, res)=>{
+    Movie.findOne({_id: req.params.id}).exec((error, movie)=>{
+        if(error){
             console.log('Error:', error)
-
         } else {
-            res.render('../views/movies/show', { movie: movie })
-
+            res.send(movie)
         }
     })
 }
 
-//edit
-movieController.edit = (req, res) => {
-    Movie.findOne({ _id: req.params.id }).exec((error, movie) => {
-        if (error) {
-            console.log('Error:', error)
-
-        } else {
-            res.render('../views/movies/edit', { movie: movie })
-        }
-    })
-}
 //update
-movieController.update = (req, res) => {
-    Movie.findByIdAndUpdate(req.params.id, {
-        $set: {
-            title: req.body.title,
-            director: req.body.director,
-            genre: req.body.genre,
-            description: req.body.description,
-            rating: req.body.rating,
-            updated_at: req.body.updated_at
-        }
-    }, { new: true }, (error, movie) => {
-        if (error) {
+ movieController.update = (req, res)=>{
+    Movie.findByIdAndUpdate(req.params.id, {$set:{
+        title:req.body.title,
+        director: req.body.director,
+        genre: req.body.genre,
+        description: req.body.description,
+        rating: req.body.rating,
+        updated_at: req.body.updated_at
+    }}, { new: true}, (error, movie)=>{
+        if(error) {
             console.log(error)
-            res.redirect('../views/movies/edit', { movie: req.body })
+            res.status(400);
+            res.send({error: 'None shall pass'});
+                 
+        } else{
 
-        } else {
-            res.redirect(`/movies/show/${movie._id}`)
-
+           res.send(movie)
+            
         }
     })
-}
-//delete
-movieController.delete = (req, res) => {
-    Movie.remove({ _id: req.params.id }, (error) => {
-        if (error) {
+    } 
+  
+    //delete
+    movieController.delete = (req,res)=>{
+    Movie.deleteOne({_id: req.params.id}, (error) => {
+        if(error) {
             console.log(error)
-
-
+            
+                 
         } else {
-            console.log('Movie deleted');
-
-
+           console.log('Movie deleted');
+            res.send('movies/list') 
+           
+            
         }
     })
-}
+} 
+ 
 
-module.exports = movieController
+module.exports = movieController;

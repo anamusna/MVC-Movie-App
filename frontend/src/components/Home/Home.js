@@ -1,37 +1,35 @@
-import React from "react";
-import MoviesList from "./MoviesList";
-import { BrowserRouter as Redirect } from "react-router-dom";
-import Movies from "./Movies";
-
+import React from 'react';
+import MoviesList from './MoviesList';
+import './css/home.css';
+import UserHead from '../Header/UserHead';
+import SearchBar from './SearchBar';
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            movies: Movies
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-    onAddMoviePressed = value => {
+	/* onAddMoviePressed = (value) => {
         this.setState(
             {
-                movies: this.state.movies.concat(value)
+                movies : this.state.movies.concat(value)
             },
             () => {
                 return <Redirect to="/home" />;
             }
         );
-    };
-    render() {
-        return (
-
-            <div className="">
-                <MoviesList movies={this.state.movies} />
-
-            </div>
-
-        );
-    }
+    }; */
+	render() {
+		return (
+			<div className="App">
+				<UserHead />
+				<h2 id="welcomeText">AFTER LOGIN/SIGNUP</h2>
+				<SearchBar />
+				<MoviesList />
+			</div>
+		);
+	}
 }
 
 export default Home;
