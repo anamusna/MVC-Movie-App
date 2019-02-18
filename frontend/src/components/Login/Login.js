@@ -72,11 +72,11 @@ class Login extends Component {
 							<span style={{ fontSize: 15 }}>Login with google</span>
 						</GoogleLoginButton>
 					</div>
-					<span className="center">
+					<div className="signup-text">
 						<a href="/signup" className="btn btn-outline-info">
 							You dont have an account sign up here
 						</a>
-					</span>
+					</div>
 				</form>
 			</div>
 		);

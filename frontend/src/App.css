@@ -6,6 +6,7 @@ body {
 		"Droid Sans", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: pink !important;
 }
 
 code {
@@ -44,7 +45,7 @@ code {
 	}
 }
 
-form button {
+Form Button {
 	outline: 0 !important;
 }
 p {
@@ -56,13 +57,13 @@ body {
 	font-size: 0.9375rem;
 	font-weight: 400;
 }
-label {
+Label {
 	margin-bottom: 0.5rem;
 	display: inline-block;
 }
 
-button,
-input {
+Button,
+Input {
 	overflow: visible;
 }
 * {
@@ -85,24 +86,23 @@ a {
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects;
 }
-button {
+Button {
 	border-radius: 0;
 }
-button:focus {
+Button:focus {
 	outline: dotted 1px;
 	outline: -webkit-focus-ring-color auto 5px;
 }
-button,
-input {
-	margin: 0;
+Button,
+Input {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
 }
-button {
+Button {
 	text-transform: none;
 }
-form label {
+Form Label {
 	text-transform: uppercase;
 	color: #a8acb9;
 	font-size: 0.84375rem;
@@ -115,7 +115,7 @@ button {
 	-webkit-appearance: button;
 }
 [type="submit"]::-moz-focus-inner,
-button::-moz-focus-inner {
+Button::-moz-focus-inner {
 	padding: 0;
 	border-style: none;
 }
@@ -139,19 +139,12 @@ body,
 html {
 	height: 100%;
 }
-p {
-	margin: 0;
-}
+
 a,
 a:hover {
 	color: #00aeef;
 }
-body {
-	color: #004c67;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	line-height: 1.875rem;
-}
+
 b,
 strong {
 	font-family: sofia_problack;
@@ -189,18 +182,10 @@ a:hover {
 .bm-center.bm-center-content p {
 	padding-bottom: 30px;
 }
-a,
-form button,
-form button .icon {
-	-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-form button.btn-blue:hover .icon {
-	background-color: #00aeef;
-}
+
 #tabs {
-	max-width: 480px;
-	margin: auto;
+	width: 600px;
+	margin: 30% auto;
 }
 #tabs #tab {
 	height: 55px;
@@ -231,10 +216,7 @@ form button.btn-blue:hover .icon {
 	padding-top: 20px !important;
 	padding-bottom: 120px !important;
 }
-#form-login {
-	max-width: 500px;
-	margin: 0 auto;
-}
+
 #form-login button {
 	width: 100% !important;
 	margin-top: 33px;
@@ -245,6 +227,7 @@ form button.btn-blue:hover .icon {
 	color: white;
 	font-size: 15px;
 	margin-right: 23px;
+	float: right;
 }
 
 @media (min-width: 991.98px) and (max-width: 1075px) {
@@ -252,7 +235,7 @@ form button.btn-blue:hover .icon {
 		padding-left: 10px;
 	}
 }
-form label span {
+Form Label span {
 	text-transform: lowercase;
 	font-size: 10.5px;
 	padding-left: 10px;

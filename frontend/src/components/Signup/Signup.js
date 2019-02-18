@@ -5,136 +5,126 @@ import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './Signup.css';
 
 class Signup extends Component {
+	constructor(props) {
+		super(props);
 
-  constructor(props) {
-    super(props);
+		this.state = {
+			users : []
+		};
+	}
 
-    this.state = {
-     users:[]
-    };
-
-
-  }
-
-  componentDidMount() {
+	componentDidMount() {
 		axios.post('http://localhost:3001/api/users/new').then((results) => {
 			console.log(results);
 
 			this.setState({ users: results.data });
 			console.log(this.state.users);
 		});
-		
 	}
 
-  onChangeName=(value) => {
-      this.setState({
-			  name : value
+	onChangeName = (value) => {
+		this.setState({
+			name : value
 		});
-    
-  };
+	};
 
-  onChangeEmail=(value) => {
-    this.setState({
-      email : value
-    });
-  
-  };
+	onChangeEmail = (value) => {
+		this.setState({
+			email : value
+		});
+	};
 
-  onChangeUser=(value) => {
-    this.setState({
-      username : value
-    });
-  
-  };
+	onChangeUser = (value) => {
+		this.setState({
+			username : value
+		});
+	};
 
-  onChangePassWord=(value) => {
-    this.setState({
-      password : value
-    });
-  
-  };
+	onChangePassWord = (value) => {
+		this.setState({
+			password : value
+		});
+	};
 
-  addUser(value){
-    axios.post('http://localhost:3001/api/users/new', value).then((response) => console.log(response));
+	addUser(value) {
+		axios.post('http://localhost:3001/api/users/new', value).then((response) => console.log(response));
 	}
-  
 
+	render() {
+		return (
+			<div id="tabs" className="medium-5 columns left bm-center-content row">
+				<form id="form-login" className="col">
+					<FormControl fullWidth className="row">
+						<InputLabel>Name</InputLabel>
 
-  render() {
+						<Input
+							id="name"
+							type="text"
+							name="name"
+							placeholder="Your Name"
+							onChange={this.onChange}
+							required
+						/>
+					</FormControl>
 
-    return (
+					<FormControl fullWidth className="row">
+						<InputLabel>Email</InputLabel>
 
+						<Input
+							id="email"
+							type="text"
+							name="email"
+							placeholder="email@example.com"
+							onChange={this.onChange}
+							required
+						/>
+					</FormControl>
 
-      <div id="tabs" className="medium-5 columns left bm-center-content row">
+					<FormControl fullWidth className="row">
+						<InputLabel>Username</InputLabel>
 
-        <form id="form-login" className="col">
+						<Input
+							id="username"
+							type="text"
+							name="username"
+							placeholder="whats your user name"
+							onChange={this.onChange}
+							required
+						/>
+					</FormControl>
 
-          <FormControl fullWidth className="row">
-            <InputLabel>Name</InputLabel>
+					<FormControl fullWidth className="row">
+						<InputLabel>Password</InputLabel>
 
-            <Input
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              onChange={this.onChange}
-              required
-            />
-          </FormControl>
+						<Input
+							id="password"
+							type="password"
+							name="password"
+							placeholder="enter password"
+							onChange={this.onChange}
+							required
+						/>
+					</FormControl>
+					<FormControl fullWidth className="row">
+						<Button
+							type="submit"
+							variant="extendedFab"
+							className="btn-success"
+							onClick={() => this.addUser(this.state)}
+						>
+							Sign Up
+						</Button>
+					</FormControl>
 
-          <FormControl fullWidth className="row">
-            <InputLabel>Email</InputLabel>
-
-            <Input
-              id="email"
-              type="text"
-              name="email"
-              placeholder="email@example.com"
-              onChange={this.onChange}
-              required
-            />
-          </FormControl>
-
-          <FormControl fullWidth className="row">
-            <InputLabel>Username</InputLabel>
-
-            <Input
-              id="username"
-              type="text"
-              name="username"
-              placeholder="whats your user name"
-              onChange={this.onChange}
-              required
-            />
-          </FormControl>
-
-          <FormControl fullWidth className="row">
-            <InputLabel>Password</InputLabel>
-
-            <Input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="enter password"
-              onChange={this.onChange}
-              required
-            />
-          </FormControl>
-          <Grid item xs={12}>
-            <Button type="submit" variant="extendedFab" className="btn-success" onClick={() => this.addUser(this.state)} >
-              Sign Up
-								</Button>
-
-            <a href="/login" className="btn btn-outline-info">Already have an account Login here</a>
-          </Grid>
-
-        </form>
-
-      </div>
-
-
-    );
-  }
+					<div className="signup-text">
+						<a href="/login" className="btn btn-outline-info">
+							Already have an account Login here
+						</a>
+					</div>
+				</form>
+			</div>
+		);
+	}
 }
 
 export default Signup;

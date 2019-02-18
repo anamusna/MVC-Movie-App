@@ -1,33 +1,19 @@
 .card {
+	height: 100% !important;
+}
+.card-folder {
 	border: 2px solid black;
 	width: 330px;
-	height: 400px;
 	position: relative;
 	margin: 10px auto;
-	display: flex;
-	flex-direction: column;
-	background-color: #00000090;
+	text-transform: uppercase;
 }
-
-.card-director {
-	width: 300px !important;
+.card-image {
 	height: auto !important;
 	border: 1px solid red !important;
 }
 
-.card-content {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	overflow: visible;
-	background-size: cover;
-	color: white;
-
-	transition: all 6s ease-in;
-	z-index: 1000;
-}
-
-.card-content:hover {
+.card:hover {
 	transition: all 200ms ease-in;
 	transform: scale(1.03);
 }
@@ -44,7 +30,7 @@
 	text-transform: uppercase;
 	letter-spacing: 5px;
 }
-.card-category {
+.card-genre {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	color: tomato;
