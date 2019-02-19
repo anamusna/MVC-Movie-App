@@ -31,6 +31,19 @@ class MoviesList extends Component {
 		});
 	}
 
+	removeMovie = (e) => {
+		e.preventDefault();
+
+		axios
+			.delete('http://localhost:3001/api/movies/:id;')
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	title;
 	newRating;
 	filter() {
@@ -70,25 +83,27 @@ class MoviesList extends Component {
 		this.filter();
 	};
 
-	searchByGenre = (value) => {
+	searchByGenre = (movie) => {
 		this.setState({
-			minRating : 0,
-			movies    : !value.includes('All')
-				? this.state.movies.filter((movie) => String(movie.genre).toLowerCase())
+			movies : !movie.includes('All')
+				? this.state.movies.filter((movie) => String(movie.genres).toLowerCase())
 				: this.state.movies
 		});
+		console.log('oops', movie.genres);
 	};
+
 	render() {
 		return (
-			<div>
+			<div className="App">
 				<div className="genres">
 					<hr />
 					<h3 className="genres-title">Categories</h3>
 
 					<div className="genres-list">
 						{genres.map((movie, index) => (
-							<a key={index} onClick={(e) => this.searchByGenre(movie)}>
+							<a href="#">
 								{movie}
+								{console.log(genres[index])}
 							</a>
 						))}
 					</div>

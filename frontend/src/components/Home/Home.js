@@ -28,7 +28,7 @@ class Home extends React.Component {
 		return (
 			<div className="App">
 				<UserHead />
-				<h2 id="welcomeText">AFTER LOGIN/SIGNUP</h2>
+
 				<div className="movie-frame">
 					<a href="#" className="add-movie">
 						<AddMovie addMovieFunction={(value) => this.onAddMoviePressed(value)} />

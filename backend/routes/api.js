@@ -5,7 +5,7 @@ const router = express.Router();
 const cors = require('cors');
 
 const movieController = require('../controllers/MoviesController.js');
-const upload = require('../handlers/multer')
+const upload = require('../handlers/multer');
 
 /*  const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -36,7 +36,6 @@ const upload = require('../handlers/multer')
         /* fileFilter: fileFilter   
 
 });  */
-
 
 //get a list of movies
 router.get('/movies/list', cors(), movieController.list);

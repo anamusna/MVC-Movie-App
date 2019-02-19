@@ -1,10 +1,13 @@
 .add-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-  }
-  .body {
-    margin: 0 auto;
-  }
-  
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+}
+.body {
+	margin: 0 auto;
+}
+.add {
+	margin-top: 20px !important;
+	color: red !important;
+}

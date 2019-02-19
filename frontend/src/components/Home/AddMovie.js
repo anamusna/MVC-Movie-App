@@ -4,18 +4,19 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 class AddMovie extends React.Component {
 	constructor(props) {
 		super(props);
 		/* let added = false; */
 		this.state = {
 			movies      : [],
-			modal       : false,
 			title       : '',
 			description : '',
 			genre       : '',
 			rating      : 0,
-			image       : null
+			image       : {},
+			modal       : false
 		};
 		console.log(this.state.rating);
 		this.toggle = this.toggle.bind(this);
@@ -82,7 +83,7 @@ class AddMovie extends React.Component {
 		axios
 			.post('http://localhost:3001/api/movies/new', formData, config)
 			.then((response) => {
-				alert(response, 'The file is successfully uploaded');
+				return response;
 			})
 			.catch((error) => {
 				console.log(error);
@@ -93,9 +94,16 @@ class AddMovie extends React.Component {
 		const { title, description, genre, rating } = this.state;
 		return (
 			<div>
-				<a color="danger" onClick={this.toggle}>
-					add movie
-				</a>
+				<div className="add">
+					<a
+						className="btn-outline-success"
+						style={{ border: '2px solid green', padding: '10px', margin: '10px' }}
+						onClick={this.toggle}
+					>
+						ADD MOVIE
+					</a>
+				</div>
+
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 					<ModalHeader toggle={this.toggle}>Add your movie here</ModalHeader>
 					<ModalBody>
