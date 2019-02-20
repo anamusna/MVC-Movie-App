@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/card.css';
-import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
+
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 class MovieCard extends React.Component {
 	render() {
@@ -13,7 +14,6 @@ class MovieCard extends React.Component {
 					</CardBody>
 					<CardImg
 						className="card-image"
-						width="100%"
 						src={`http://localhost:3001/${this.props.movie.image}`}
 						alt="movie image"
 					/>

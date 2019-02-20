@@ -1,5 +1,4 @@
 .all-movies-list {
-	border: 1px solid #ccc;
 	justify-content: space-around;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -14,6 +13,7 @@
 	border: 1px solid gray;
 	text-transform: uppercase;
 	border-radius: 20px;
+	background-color: #f2f2f2 !important;
 }
 input {
 	text-indent: 10px;

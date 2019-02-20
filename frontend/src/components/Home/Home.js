@@ -30,9 +30,7 @@ class Home extends React.Component {
 				<UserHead />
 
 				<div className="movie-frame">
-					<a href="#" className="add-movie">
-						<AddMovie addMovieFunction={(value) => this.onAddMoviePressed(value)} />
-					</a>
+					<AddMovie addMovieFunction={(value) => this.onAddMoviePressed(value)} />
 				</div>
 				<MoviesList />
 			</div>

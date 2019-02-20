@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/addMovie.css';
+
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -95,13 +96,15 @@ class AddMovie extends React.Component {
 		return (
 			<div>
 				<div className="add">
-					<a
+					<div
+						data-toggle="modal"
+						data-target="/new"
 						className="btn-outline-success"
 						style={{ border: '2px solid green', padding: '10px', margin: '10px' }}
 						onClick={this.toggle}
 					>
-						ADD MOVIE
-					</a>
+						<span>Add New Movie</span>
+					</div>
 				</div>
 
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

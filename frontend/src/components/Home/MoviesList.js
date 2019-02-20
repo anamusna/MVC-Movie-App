@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import Genres from './Genres';
-import RateFilter from './RateFilter';
+import Rating from './Rating';
 let genres = Genres;
 
 class MoviesList extends Component {
@@ -15,12 +15,15 @@ class MoviesList extends Component {
 		this.searchByGenre.bind(this);
 		this.searchByTitle.bind(this);
 		this.state = {
-			movies    : [],
-			minRating : 0,
-			newRating : undefined,
-			title     : undefined
+			movies       : [],
+			searchRating : 0,
+			minRating    : 0,
+			newRating    : undefined,
+			title        : undefined
 		};
 	}
+
+	//get the data
 
 	componentDidMount() {
 		axios.get('http://localhost:3001/api/movies/list').then((results) => {
@@ -31,6 +34,7 @@ class MoviesList extends Component {
 		});
 	}
 
+	//Delete a movie
 	removeMovie = (e) => {
 		e.preventDefault();
 
@@ -74,6 +78,7 @@ class MoviesList extends Component {
 		});
 		this.filter();
 	};
+
 	searchByTitle = (value) => {
 		console.log(value);
 		this.title = value;
@@ -99,14 +104,7 @@ class MoviesList extends Component {
 					<hr />
 					<h3 className="genres-title">Categories</h3>
 
-					<div className="genres-list">
-						{genres.map((movie, index) => (
-							<a href="#">
-								{movie}
-								{console.log(genres[index])}
-							</a>
-						))}
-					</div>
+					<div className="genres-list">{genres.map((movie, index) => <a href="#">{movie}</a>)}</div>
 				</div>
 				<div className="movies-list">
 					<div className="movies-list-header">
@@ -118,7 +116,7 @@ class MoviesList extends Component {
 						/>
 
 						<div>
-							<RateFilter
+							<Rating
 								rating={this.state.minRating}
 								onChangeRating={(newRating) => this.changeRating(newRating)}
 							/>

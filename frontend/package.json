@@ -40,6 +40,7 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
+		"font-awesome": "^4.7.0",
 		"nodemon": "^1.18.10"
 	}
 }
