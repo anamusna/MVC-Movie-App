@@ -3,7 +3,7 @@ import './css/MoviesList.css';
 import MovieCard from './MovieCard';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Genres from './Genres';
 import Rating from './Rating';
 let genres = Genres;

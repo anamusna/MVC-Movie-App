@@ -8,7 +8,10 @@ router.get('/users/list', cors(), userController.list);
 
 
 //add a new users to DB
-router.post('/users/new', cors(), userController.save);
+router.post('/users/signup', cors(), userController.create);
+
+//signin
+ router.post('/users/signin', cors(), userController.save); 
  
 //show a user
 router.get('/users/:id', cors(), userController.show);

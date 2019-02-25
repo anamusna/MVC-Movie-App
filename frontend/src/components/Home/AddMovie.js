@@ -2,9 +2,9 @@ import React from 'react';
 import './css/addMovie.css';
 
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+//import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Form, FormGroup, Label, Input, /* FormText  */} from 'reactstrap';
 
 class AddMovie extends React.Component {
 	constructor(props) {
@@ -79,7 +79,9 @@ class AddMovie extends React.Component {
 			headers : {
 				'content-type' : 'multipart/form-data'
 			}
+			  
 		};
+		
 		console.log(formData, this.state);
 		axios
 			.post('http://localhost:3001/api/movies/new', formData, config)
@@ -89,6 +91,7 @@ class AddMovie extends React.Component {
 			.catch((error) => {
 				console.log(error);
 			});
+		
 	};
 
 	render() {
@@ -187,9 +190,9 @@ class AddMovie extends React.Component {
 								/>
 							</FormGroup>
 
-							<Link className="add" to="/new">
+							{/* <Link className="add" to="/new">
 								<i className="fas fa-plus" />
-							</Link>
+							</Link> */} 
 							<ModalFooter>
 								<Button type="submit" color="primary">
 									Add Movie

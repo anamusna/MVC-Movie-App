@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const movieSchema = require('../models/Movies');
+const SessionSchema = require('../models/SessionSchema')
+const Session = mongoose.model('Session', SessionSchema) 
+const uuid = require('uuid');
 
 
 
@@ -7,18 +10,9 @@ const movieSchema = require('../models/Movies');
 
 const Movie = mongoose.model('Movie', movieSchema)
 
-/* require('dotenv').config()
-const cloudinary = require('cloudinary')
-
-//configure cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
-})
- */
 
 const movieController = {}
+
 
 
 
@@ -35,6 +29,33 @@ movieController.list = (req,res) => {
 }
 
 // create method
+
+movieController.login = (req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+
+    User.findOne({email, password}).then((user) => {
+        if (user) {
+            let sessionId = uuid();
+
+            res.cookie('session_id', sessionId, {
+                expires: new Date(Date.now() + 900000)
+            });
+
+            let session = new Session({
+                uuid: sessionId,
+                user_id: user,
+            })
+
+            session.save();
+    
+            res.redirect('/home');
+        } else {
+            res.redirect('/login');
+        }
+    });
+}
+
 movieController.save = (req, res)=>{
     console.log(req.body);
     

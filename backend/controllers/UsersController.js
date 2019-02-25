@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const usersSchema = require('../models/Users')
-
+const mongoose = require('mongoose');
+const usersSchema = require('../models/Users');
+const bcrypt = require('bcrypt');
 const User = mongoose.model('User', usersSchema)
 
 const userController = {}
@@ -8,7 +8,8 @@ const userController = {}
 
 
 //List all users
-userController.list = (req,res) => {
+ userController.list = (req,res) => {
+     
     User.find({}).exec((error, users) => {
         if(error){
             console.log('Error:', error)
@@ -16,80 +17,164 @@ userController.list = (req,res) => {
             res.send(users)
         }
     })
-}
+} 
 
 
-// create method
-userController.save = (req, res)=>{
+userController.create = (req, res, next) => {
+    //const hash = bcrypt.hash(req.body.password, 10)
     
-     let user = new User({
-        name: req.body.username,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
-        
-    }) 
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    if (err) {
+                        return res.status(500).json({
+                            error: 'err'
+                        });
+                    } else {
 
-    user.save((error)=>{
-        if(error) {
-            console.log(error)
-            res.send(error)      
-        } else{
-            console.log('User was created');
-            res.send(user)          
-        }
-    })
+                        let user = new User({
+                            name: req.body.name,
+                            email: req.body.email,
+                            username: req.body.username,
+                            password: hash
+                        });
+
+                        user
+                            .save()
+                            .then(result => {
+                                console.log(result);
+
+                                res.status(201).json({
+                                    message: 'User created'
+                                });
+                            })
+                            .catch(err => {
+
+                                console.log(err);
+                                res.status(500).json({
+                                    error: err
+                                });
+
+                            });
+                    }
+                })
+            
+        
+
+
 }
+
+//login method
+
+     userController.save = (req, res, next) =>{
+    User.find({
+        username: req.body.username,
+        
+    })
+    .exec()
+    .then(user => {
+        if (user.length < 1) {
+            return res.status(401).json({
+                message: 'Please enter the right Username'
+            });
+            
+        }
+        bcrypt.compare(req.body.password, user[0].password, (err, result))
+        if (err) {
+            return res.status(401).json({
+                message: 'Please enter the right Username and Password'
+            });
+        }
+        if (result) {
+            return res.status(200).json({
+                message: 'signin successful'
+            });
+        } else {
+            res.status(401).json({
+                message: 'Please enter the right Username  and Password'
+            });
+        }
+        
+    })
+     .catch(err => {
+
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+        console.log(err);
+        
+
+    }); 
+
+}   
+ 
+
+
+
 
 //show method
-userController.show = (req, res)=>{
-    User.findOne({_id: req.params.id}).exec((error, user)=>{
-        if(error){
+userController.show = (req, res) => {
+    User.findOne({
+        _id: req.params.id
+    }).exec((error, user) => {
+        if (error) {
             console.log('Error:', error)
         } else {
             res.send(user)
         }
-    
+
     })
 }
 
 //update
- userController.update = (req, res)=>{
-    User.findByIdAndUpdate(req.params.id, {$set:{
-        name: req.body.username,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password,
-        updated_at: req.body.updated_at
-    }}, { new: true}, (error, user)=>{
-        if(error) {
+userController.update = (req, res) => {
+    User.findByIdAndUpdate(req.params.id, {
+        $set: {
+            name: req.body.username,
+            email: req.body.email,
+            username: req.body.username,
+            password: req.body.password,
+            updated_at: req.body.updated_at
+        }
+    }, {
+        new: true
+    }, (error, user) => {
+        if (error) {
             console.log(error)
             res.status(400);
-            res.send({error: 'None shall pass'});
-                 
-        } else{
+            res.send({
+                error: 'None shall pass'
+            });
 
-           res.send(user)
-            
+        } else {
+
+            res.send(user)
+
         }
     })
-    } 
-  
-    //delete
-  userController.delete = (req,res)=>{
-    User.deleteOne({_id: req.params.id}, (error) => {
-        if(error) {
+}
+
+//delete
+userController.delete = (req, res, next) => {
+    User.deleteOne({_id: req.params.id},
+         (error) => {
+        if (error) {
             console.log(error)
+            res.status(500).json({
+                error:err
+            })
+
+
+        } else {
+            console.log('User deleted');
+            res.status(200).json({
+                message:'User deleted'
+            })
             
-                 
-        } else{
-           console.log('User deleted');
-            res.send('users/list') 
-           
-            
+
+
         }
     })
-} 
- 
+}
 
-module.exports = userController;  
+
+module.exports = userController;

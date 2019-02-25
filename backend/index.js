@@ -9,6 +9,7 @@ const morgan=require('morgan');
 
 
 
+
 //set up express app
 const app = express();
 app.get('/', (req, res)=>{
@@ -52,6 +53,7 @@ app.use('/uploads', express.static('./uploads/'));
 
   //listen for request
 
-  app.listen(3001, () => {
+   app.listen(3001, () => {
     console.log('Listening at port 3001')
-  });
+  }); 
+ 

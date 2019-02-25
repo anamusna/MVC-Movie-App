@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import Avatar from 'react-avatar';
+//import Avatar from 'react-avatar';
 
 class UserHead extends React.Component {
 	constructor(props) {
