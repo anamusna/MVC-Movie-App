@@ -11,7 +11,7 @@ router.get('/users/list', cors(), userController.list);
 router.post('/users/signup', cors(), userController.create);
 
 //signin
- router.post('/users/signin', cors(), userController.save); 
+ router.post('/users/signin', cors(), userController.check); 
  
 //show a user
 router.get('/users/:id', cors(), userController.show);

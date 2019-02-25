@@ -64,19 +64,18 @@ userController.create = (req, res, next) => {
 
 //login method
 
-     userController.save = (req, res, next) =>{
+     userController.check = (req, res, next) =>{
+        
+            
+       
     User.find({
-        username: req.body.username,
+        
+        username: req.body.username
+       
         
     })
     .exec()
     .then(user => {
-        if (user.length < 1) {
-            return res.status(401).json({
-                message: 'Please enter the right Username'
-            });
-            
-        }
         bcrypt.compare(req.body.password, user[0].password, (err, result))
         if (err) {
             return res.status(401).json({
