@@ -25,11 +25,12 @@ class UserHead extends React.Component {
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
-						<NavItem>
-							<NavLink href="/home" className="btn btn-outline-info">
-								PROFILE
-							</NavLink>
-						</NavItem>
+						<NavLink href="/home" className="btn btn-outline-info">
+							PROFILE
+						</NavLink>
+						<NavLink href="/" className="btn btn-outline-secondary">
+							Logout
+						</NavLink>
 					</Nav>
 				</Collapse>
 			</Navbar>
