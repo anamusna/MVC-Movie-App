@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './Signup.css';
+import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			user : []
+			user         : [],
+			userSignedUp : false
 		};
 	}
 
@@ -17,30 +18,45 @@ class Signup extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	onAddUser(value) {
-		axios.post('http://localhost:3001/api/users/signup', value).then((response) => console.log(response));
-	}
-
 	onUserSubmit = (e) => {
 		e.preventDefault();
 
-		const userData = new FormData();
-		userData.append('name', this.state.name);
-		userData.append('email', this.state.email);
-		userData.append('username', this.state.username);
-		userData.append('password', this.state.password);
+		const userData = this.state;
 
-		axios.post('http://localhost:3001/api/users/signup', userData).then((response) => {
-			console.log(response);
+		const config = {
+			headers : {
+				Accept         : 'application/json',
+				'Content-Type' : 'application/json'
+			}
+		};
 
-			this.setState({
-				user : response.data
+		console.log(userData);
+		console.log(this.state);
+		axios
+			.post('http://localhost:3001/api/users/signup', userData, config)
+			.then((response) => {
+				this.setState({
+					userSignedUp : true
+				});
+				console.log(response);
+				return response;
+			})
+			.catch((error) => {
+				console.log(error);
 			});
-			console.log(this.state);
-		});
+	};
+
+	confirmSignUp = () => {
+		this.onUserSubmit
+			.confirmSignUp(this.state.username, this.state.authCode)
+			.then(() => this.props.history.push('/'))
+			.catch((err) => console.log('error confirming signing up: ', err));
 	};
 
 	render() {
+		if (this.state.userSignedUp === true) {
+			return <Redirect to="/home" />;
+		}
 		return (
 			<div id="tabs" className="medium-5 columns left bm-center-content row">
 				<form id="form-login" className="col" onSubmit={this.onUserSubmit}>

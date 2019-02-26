@@ -62,10 +62,6 @@ class AddMovie extends React.Component {
 		});
 	};
 
-	onAddMovie() {
-		axios.post('http://localhost:3001/api/movies/new').then((response) => console.log(response));
-	}
-
 	onFormSubmit = (e) => {
 		e.preventDefault();
 

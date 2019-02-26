@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import './Login.css';
 
@@ -16,20 +17,47 @@ class Login extends Component {
 		};
 	}
 
-	login = () => {
-		axios.post('http://localhost:3001/api/users/list').then((response) => console.log(response));
-		this.setState({
-			userLoggedIn : true
-		});
+	onChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
+		console.log(e.target.value);
 	};
 
-	onChange(e) {
-		console.log(e.target.value);
-	}
+	onUserSubmit = (e) => {
+		if (this.state.userLoggedIn === true) {
+			return <Redirect to="/home" />;
+		}
+		e.preventDefault();
+
+		const userData = this.state;
+
+		const config = {
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		};
+
+		axios
+			.post('http://localhost:3001/api/users/signin', userData, config)
+			.then((response) => {
+				console.log(response);
+
+				this.setState({
+					userLoggedIn : true
+				});
+				console.log(this.state);
+			})
+			.catch((error) => {
+				console.log(error.response);
+			});
+	};
+
 	render() {
+		if (this.state.userLoggedIn === true) {
+			return <Redirect to="/home" />;
+		}
 		return (
 			<div id="tabs" className="medium-5 columns left bm-center-content row">
-				<form id="form-login" className="col">
+				<form id="form-login" className="col" onSubmit={this.onUserSubmit}>
 					<FormControl fullWidth className="row">
 						<InputLabel>Username</InputLabel>
 						<Input
@@ -59,7 +87,7 @@ class Login extends Component {
 							</a>
 						</span>
 
-						<Button type="submit" variant="extendedFab" className="btn-success" onClick={this.login}>
+						<Button type="submit" variant="extendedFab" className="btn-success">
 							Login
 						</Button>
 					</FormControl>
