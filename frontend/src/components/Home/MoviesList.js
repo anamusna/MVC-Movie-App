@@ -97,15 +97,15 @@ class MoviesList extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div className="list">
 				<div className="genres">
 					<h3 className="genres-title">Categories</h3>
 
 					<div className="genres-list">
 						{genres.map((movie, index) => (
-							<a key={index} onClick={(e) => this.searchByGenre(movie)}>
+							<span key={index} onClick={(e) => this.searchByGenre(movie)}>
 								{movie}
-							</a>
+							</span>
 						))}
 					</div>
 				</div>

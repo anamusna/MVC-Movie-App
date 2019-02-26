@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink } from 'reactstrap';
 //import Avatar from 'react-avatar';
 
 class UserHead extends React.Component {
@@ -25,10 +25,10 @@ class UserHead extends React.Component {
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
-						<NavLink href="/home" className="btn btn-outline-info">
+						<NavLink href="/home" className="btn ">
 							PROFILE
 						</NavLink>
-						<NavLink href="/" className="btn btn-outline-secondary">
+						<NavLink href="/" className="btn">
 							Logout
 						</NavLink>
 					</Nav>

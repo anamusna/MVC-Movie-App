@@ -31,13 +31,15 @@ input {
 .genres {
 	margin: auto;
 	text-align: center;
-	max-width: 50vw !important;
+	width: 100vw !important;
 }
 .genres-list {
+	margin: auto 30%;
+
 	align-items: center;
 	cursor: pointer;
 }
-.genres-list a {
+.genres-list span {
 	text-align: center;
 	float: left;
 	font-weight: 500;
@@ -46,7 +48,7 @@ input {
 	text-transform: uppercase;
 	color: blue !important;
 }
-.genres-list a:hover {
+.genres-list span:hover {
 	color: green !important;
 }
 .movies-list-header {
