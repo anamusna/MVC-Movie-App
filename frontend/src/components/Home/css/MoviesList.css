@@ -29,14 +29,17 @@ input {
 }
 
 .genres {
+	margin: auto;
 	text-align: center;
+	max-width: 50vw !important;
 }
 .genres-list {
 	align-items: center;
-	padding: 10px;
 	cursor: pointer;
 }
 .genres-list a {
+	text-align: center;
+	float: left;
 	font-weight: 500;
 	font-size: 15px;
 	padding: 5px;
@@ -46,10 +49,10 @@ input {
 .genres-list a:hover {
 	color: green !important;
 }
-.movies-list-search {
+.movies-list-header {
 	max-width: 400px;
 	margin: auto;
 }
-.search {
+.search-input {
 	margin: auto;
 }

@@ -15,7 +15,6 @@ class Signup extends Component {
 
 	onChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
-		console.log(e.target.value);
 	};
 
 	onAddUser(value) {
@@ -42,7 +41,6 @@ class Signup extends Component {
 	};
 
 	render() {
-		const { name, username, email, password} = this.state;
 		return (
 			<div id="tabs" className="medium-5 columns left bm-center-content row">
 				<form id="form-login" className="col" onSubmit={this.onUserSubmit}>
@@ -53,7 +51,6 @@ class Signup extends Component {
 							id="name"
 							type="text"
 							name="name"
-							value = {name}
 							placeholder="Your Name"
 							onChange={this.onChange}
 							required
@@ -65,7 +62,6 @@ class Signup extends Component {
 
 						<Input
 							id="email"
-							value = {email}
 							type="text"
 							name="email"
 							placeholder="email@example.com"
@@ -81,7 +77,6 @@ class Signup extends Component {
 							id="username"
 							type="text"
 							name="username"
-							value = {username}
 							placeholder="whats your user name"
 							onChange={this.onChange}
 							required
@@ -92,7 +87,6 @@ class Signup extends Component {
 						<InputLabel>Password</InputLabel>
 
 						<Input
-							value = {password}
 							id="password"
 							type="password"
 							name="password"

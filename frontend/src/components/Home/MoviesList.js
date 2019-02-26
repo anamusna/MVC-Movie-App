@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './css/MoviesList.css';
 import MovieCard from './MovieCard';
 import axios from 'axios';
-
-//import { Link } from 'react-router-dom';
 import Genres from './Genres';
 import Rating from './Rating';
 let genres = Genres;
@@ -39,7 +37,7 @@ class MoviesList extends Component {
 		e.preventDefault();
 
 		axios
-			.delete('http://localhost:3001/api/movies/:id;')
+			.delete('http://localhost:3001/api/movies/:id')
 			.then((res) => {
 				console.log(res.data);
 			})
@@ -94,17 +92,22 @@ class MoviesList extends Component {
 				? this.state.movies.filter((movie) => String(movie.genres).toLowerCase())
 				: this.state.movies
 		});
-		console.log('oops', movie.genres);
+		console.log('oops', movie);
 	};
 
 	render() {
 		return (
 			<div className="App">
 				<div className="genres">
-					<hr />
 					<h3 className="genres-title">Categories</h3>
 
-					<div className="genres-list">{genres.map((movie, index) => <a href="#">{movie}</a>)}</div>
+					<div className="genres-list">
+						{genres.map((movie, index) => (
+							<a key={index} onClick={(e) => this.searchByGenre(movie)}>
+								{movie}
+							</a>
+						))}
+					</div>
 				</div>
 				<div className="movies-list">
 					<div className="movies-list-header">

@@ -4,7 +4,7 @@ import './css/addMovie.css';
 import axios from 'axios';
 //import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Form, FormGroup, Label, Input, /* FormText  */} from 'reactstrap';
+import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
 
 class AddMovie extends React.Component {
 	constructor(props) {
@@ -79,9 +79,8 @@ class AddMovie extends React.Component {
 			headers : {
 				'content-type' : 'multipart/form-data'
 			}
-			  
 		};
-		
+
 		console.log(formData, this.state);
 		axios
 			.post('http://localhost:3001/api/movies/new', formData, config)
@@ -91,7 +90,6 @@ class AddMovie extends React.Component {
 			.catch((error) => {
 				console.log(error);
 			});
-		
 	};
 
 	render() {
@@ -99,13 +97,7 @@ class AddMovie extends React.Component {
 		return (
 			<div>
 				<div className="add">
-					<div
-						data-toggle="modal"
-						data-target="/new"
-						className="btn-outline-success"
-						style={{ border: '2px solid green', padding: '10px', margin: '10px' }}
-						onClick={this.toggle}
-					>
+					<div data-toggle="modal" data-target="/new" onClick={this.toggle}>
 						<span>Add New Movie</span>
 					</div>
 				</div>
@@ -192,7 +184,7 @@ class AddMovie extends React.Component {
 
 							{/* <Link className="add" to="/new">
 								<i className="fas fa-plus" />
-							</Link> */} 
+							</Link> */}
 							<ModalFooter>
 								<Button type="submit" color="primary">
 									Add Movie

@@ -17,10 +17,13 @@ class MovieCard extends React.Component {
 						src={`http://localhost:3001/${this.props.movie.image}`}
 						alt="movie image"
 					/>
-					<CardBody>
+					<CardBody className="card-letters">
 						<CardText>{this.props.movie.description}</CardText>
-						<CardText>{this.props.movie.genre}</CardText>
-						<CardText>{this.props.movie.rating}</CardText>
+						<CardText>
+							<span>{this.props.movie.genre}</span>
+							<span>{this.props.movie.rating}</span>
+						</CardText>
+
 						<CardText>{this.props.movie.updated_at}</CardText>
 					</CardBody>
 				</Card>
