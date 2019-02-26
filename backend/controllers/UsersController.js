@@ -1,111 +1,112 @@
 const mongoose = require('mongoose');
 const usersSchema = require('../models/Users');
+const User = require('../models/Users')
 const bcrypt = require('bcrypt');
-const User = mongoose.model('User', usersSchema)
+
 
 const userController = {}
 
 
 
 //List all users
- userController.list = (req,res) => {
-     
+userController.list = (req, res) => {
+
     User.find({}).exec((error, users) => {
-        if(error){
+        if (error) {
             console.log('Error:', error)
         } else {
             res.send(users)
         }
     })
-} 
+}
 
 
 userController.create = (req, res, next) => {
     //const hash = bcrypt.hash(req.body.password, 10)
-    
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    if (err) {
-                        return res.status(500).json({
-                            error: 'err'
-                        });
-                    } else {
 
-                        let user = new User({
-                            name: req.body.name,
-                            email: req.body.email,
-                            username: req.body.username,
-                            password: hash
-                        });
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
 
-                        user
-                            .save()
-                            .then(result => {
-                                console.log(result);
 
-                                res.status(201).json({
-                                    message: 'User created'
-                                });
-                            })
-                            .catch(err => {
+        if (err) {
+            return res.status(500).json({
+                error: 'err'
+            });
+        } else {
 
-                                console.log(err);
-                                res.status(500).json({
-                                    error: err
-                                });
+            let user = new User({
+                name: req.body.name,
+                email: req.body.email,
+                username: req.body.username,
+                password: hash
+            });
 
-                            });
-                    }
+            user
+                .save()
+                .then(result => {
+                    console.log(result);
+
+                    res.status(201).json({
+                        message: 'User created'
+                    });
                 })
-            
-        
+                .catch(err => {
+
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    });
+
+                });
+        }
+    })
+
+
 
 
 }
 
 //login method
 
-     userController.check = (req, res, next) =>{
-        
-            
-       
+userController.check = (req, res) => {
     User.find({
-        
-        username: req.body.username
-       
-        
-    })
-    .exec()
-    .then(user => {
-        bcrypt.compare(req.body.password, user[0].password, (err, result))
-        if (err) {
-            return res.status(401).json({
-                message: 'Please enter the right Username and Password'
+            username: req.body.username
+        })
+        .exec()
+        .then(user => {
+            if (user.length < 1) {
+                return res.status(401).json({
+                    message: 'please enter your correct username'
+                });
+            }
+            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+                // res == true
+                if (err) {
+                    return res.status(404).json({
+                        message: 'Please enter the correct Password'
+                    });
+                }
+                if (result) {
+                    return res.status(200).json({
+                        message: 'signin successful'
+                    });
+                }
+                res.status(401).json({
+                    message: 'Please enter the right Username  and Password'
+                });
             });
-        }
-        if (result) {
-            return res.status(200).json({
-                message: 'signin successful'
+        })
+
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
             });
-        } else {
-            res.status(401).json({
-                message: 'Please enter the right Username  and Password'
-            });
-        }
-        
-    })
-     .catch(err => {
 
-        console.log(err);
-        res.status(500).json({
-            error: err
-        });
-        console.log(err);
-        
 
-    }); 
+        })
+}
 
-}   
- 
+
 
 
 
@@ -154,25 +155,27 @@ userController.update = (req, res) => {
 
 //delete
 userController.delete = (req, res, next) => {
-    User.deleteOne({_id: req.params.id},
-         (error) => {
-        if (error) {
-            console.log(error)
-            res.status(500).json({
-                error:err
-            })
+    User.deleteOne({
+            _id: req.params.id
+        },
+        (error) => {
+            if (error) {
+                console.log(error)
+                res.status(500).json({
+                    error: err
+                })
 
 
-        } else {
-            console.log('User deleted');
-            res.status(200).json({
-                message:'User deleted'
-            })
-            
+            } else {
+                console.log('User deleted');
+                res.status(200).json({
+                    message: 'User deleted'
+                })
 
 
-        }
-    })
+
+            }
+        })
 }
 
 

@@ -17,7 +17,7 @@ class Login extends Component {
 	}
 
 	login = () => {
-		axios.post('http://localhost:3001/api/users/list').then((response) => console.log(response));
+		axios.post('http://localhost:3001/api/users/signin' ).then((response) => console.log(response));
 		this.setState({
 			userLoggedIn : true
 		});
