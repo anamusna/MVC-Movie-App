@@ -1,12 +1,13 @@
 import React from 'react';
 import './css/addMovie.css';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
 import axios from 'axios';
 //import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
 
-class AddMovie extends React.Component {
+class EditMovie extends React.Component {
 	constructor(props) {
 		super(props);
 		/* let added = false; */
@@ -62,24 +63,25 @@ class AddMovie extends React.Component {
 		});
 	};
 
-	onFormSubmit = (e) => {
-		e.preventDefault();
+	onMovieEdit = (id) => {
+		axios.get('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
+		console.log(id);
 
 		const formData = new FormData();
-		formData.append('image', this.state.image);
-		formData.append('title', this.state.title);
-		formData.append('description', this.state.description);
-		formData.append('genre', this.state.genre);
-		formData.append('rating', this.state.rating);
+		formData.append('image', this.props.image);
+		formData.append('title', this.props.title);
+		formData.append('description', this.props.description);
+		formData.append('genre', this.props.genre);
+		formData.append('rating', this.props.rating);
 		const config = {
 			headers : {
 				'content-type' : 'multipart/form-data'
 			}
 		};
 
-		console.log(formData, this.state);
+		console.log(this.state);
 		axios
-			.post('http://localhost:3001/api/movies/new', formData, config)
+			.put('http://localhost:3001/api/movies', config)
 			.then((response) => {
 				return response;
 			})
@@ -90,17 +92,16 @@ class AddMovie extends React.Component {
 
 	render() {
 		const { title, description, genre, rating } = this.state;
-
 		return (
 			<div>
 				<div className="add">
-					<div data-toggle="modal" data-target="/new" onClick={this.toggle}>
-						<span>Add New Movie</span>
+					<div data-toggle="modal" onClick={this.toggle}>
+						<span>Update The Movie</span>
 					</div>
 				</div>
 
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-					<ModalHeader toggle={this.toggle}>Add your movie here</ModalHeader>
+					<ModalHeader toggle={this.toggle}>Update your movie here</ModalHeader>
 					<ModalBody>
 						<div className="text-right">
 							<a className="btn btn-blue no-margin" href="/home">
@@ -115,7 +116,7 @@ class AddMovie extends React.Component {
 									type="text"
 									name="title"
 									id="title"
-									value={title}
+									value={this.props.title}
 									placeholder="Movie name"
 									onChange={this.onChange}
 								/>
@@ -127,7 +128,7 @@ class AddMovie extends React.Component {
 									type="textarea"
 									name="description"
 									id="description"
-									value={description}
+									value={this.description}
 									placeholder="movie description"
 									onChange={this.onChange}
 								/>
@@ -139,7 +140,7 @@ class AddMovie extends React.Component {
 									type="select"
 									name="genre"
 									id="genre"
-									value={genre}
+									value={this.genre}
 									onChange={this.onChange}
 								>
 									<option>Action</option>
@@ -160,7 +161,7 @@ class AddMovie extends React.Component {
 									type="select"
 									name="rating"
 									id="rating"
-									value={rating}
+									value={this.rating}
 									onChange={this.onChange}
 								>
 									<option>0</option>
@@ -183,13 +184,9 @@ class AddMovie extends React.Component {
 									onChange={this.onChangeImage}
 								/>
 							</FormGroup>
-
-							{/* <Link className="add" to="/new">
-								<i className="fas fa-plus" />
-							</Link> */}
 							<ModalFooter>
 								<Button type="submit" color="primary">
-									Add Movie
+									Update
 								</Button>{' '}
 								<Button color="secondary" onClick={this.toggle}>
 									Cancel
@@ -198,11 +195,9 @@ class AddMovie extends React.Component {
 						</Form>
 					</ModalBody>
 				</Modal>
-
-				<Redirect to="/home" />
 			</div>
 		);
 	}
 }
 
-export default AddMovie;
+export default EditMovie;

@@ -24,6 +24,11 @@ class Home extends React.Component {
 			movies : this.state.movies.concat(value)
 		});
 	};
+	onEditMoviePressed = (value) => {
+		this.setState({
+			movies : this.state.movies.concat(value)
+		});
+	};
 	render() {
 		return (
 			<div className="App">

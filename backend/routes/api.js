@@ -7,7 +7,6 @@ const cors = require('cors');
 const movieController = require('../controllers/MoviesController.js');
 const upload = require('../handlers/multer');
 
-
 //get a list of movies
 router.get('/movies/list', cors(), movieController.list);
 
@@ -19,9 +18,9 @@ router.get('/movies/:id', cors(), movieController.show);
 
 //update a movies in the DB
 
-router.put('/movies/:id', cors(), movieController.update);
+router.put('/movies/', cors(), movieController.update);
 
 //delete a movie in the DB
-router.delete('/movies/:id', cors(), movieController.delete);
+router.delete('/movies/', cors(), movieController.delete);
 
 module.exports = router;

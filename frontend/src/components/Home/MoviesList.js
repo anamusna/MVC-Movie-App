@@ -12,6 +12,7 @@ class MoviesList extends Component {
 		this.changeRating = this.changeRating.bind(this);
 		this.searchByGenre.bind(this);
 		this.searchByTitle.bind(this);
+		this.removeMovie.bind(this);
 		this.state = {
 			movies       : [],
 			searchRating : 0,
@@ -31,19 +32,19 @@ class MoviesList extends Component {
 			console.log(this.state.movies);
 		});
 	}
+	//Edit a movie
+
+	editMovie = (id) => {
+		console.log(id);
+		axios.get('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
+		console.log('it works with edit!');
+	};
 
 	//Delete a movie
-	removeMovie = (e) => {
-		e.preventDefault();
 
-		axios
-			.delete('http://localhost:3001/api/movies/:id')
-			.then((res) => {
-				console.log(res.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	removeMovie = (id) => {
+		console.log(id);
+		axios.delete('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
 	};
 
 	title;
@@ -127,7 +128,7 @@ class MoviesList extends Component {
 					</div>
 					<div className="all-movies-list">
 						{this.state.movies.map((movie, index) => {
-							return <MovieCard movie={movie} key={index} />;
+							return <MovieCard movie={movie} key={index} removeMovie={this.removeMovie} />;
 						})}
 					</div>
 				</div>
