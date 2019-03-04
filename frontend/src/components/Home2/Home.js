@@ -28,7 +28,7 @@ class Home extends Component {
         return (
            
                 <div>  
-                    <MoviesList movies={this.state.movies} />}
+                    <MoviesList movies={this.state.movies} />
                     
                 </div>
           

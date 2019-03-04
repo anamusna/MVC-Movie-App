@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/card.css';
-import EditMovie from './EditMovie';
+//import EditMovie from './EditMovie';
 
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
@@ -24,16 +24,7 @@ class MovieCard extends React.Component {
 							<span>{this.props.movie.genre}</span>
 							<span>{this.props.movie.rating}</span>
 						</CardText>
-						 <CardText>
-							<EditMovie editMovie={this.props.onEditMovie} />
-
-							<span
-								onClick={() => this.props.removeMovie(this.props.movie._id)}
-								className="btn btn-danger btn-sm"
-							>
-								Delete
-							</span>
-						</CardText>  
+						  
 						<CardText>{this.props.movie.updated_at}</CardText>
 					</CardBody> 
 				</Card>

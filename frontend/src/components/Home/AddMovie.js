@@ -1,15 +1,15 @@
 import React from 'react';
 import './css/addMovie.css';
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-//import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
 
 class AddMovie extends React.Component {
 	constructor(props) {
 		super(props);
-		/* let added = false; */
+		
 		this.state = {
 			movies      : [],
 			title       : '',
@@ -17,7 +17,9 @@ class AddMovie extends React.Component {
 			genre       : '',
 			rating      : 0,
 			image       : {},
-			modal       : false
+			modal       : false,
+			added		: false
+			
 		};
 		console.log(this.state.rating);
 		this.toggle = this.toggle.bind(this);
@@ -75,29 +77,50 @@ class AddMovie extends React.Component {
 			headers : {
 				'content-type' : 'multipart/form-data'
 			}
+			
 		};
 
 		console.log(formData, this.state);
 		axios
 			.post('http://localhost:3001/api/movies/new', formData, config)
 			.then((response) => {
-				return response;
+				if (response) {
+					this.setState({
+						added: true
+					})
+					return response 
+				}
+				
 			})
 			.catch((error) => {
 				console.log(error);
 			});
+
+			
+				
+			
+			
 	};
+	
 
 	render() {
+		if (this.state.added === true) {
+			
+			window.location.reload(); 
+		}
 		const { title, description, genre, rating } = this.state;
 
 		return (
 			<div>
 				<div className="add">
 					<div data-toggle="modal" data-target="/new" onClick={this.toggle}>
-						<span>Add New Movie</span>
+					
+					
+						
 					</div>
+					<button onClick={this.toggle} className="addbutton">Add New Movie</button>
 				</div>
+				
 
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 					<ModalHeader toggle={this.toggle}>Add your movie here</ModalHeader>
@@ -149,7 +172,6 @@ class AddMovie extends React.Component {
 									<option>Animation</option>
 									<option>Sci-Fi</option>
 									<option>Horror</option>
-
 									<option>Adventure</option>
 								</Input>
 							</FormGroup>
@@ -188,8 +210,8 @@ class AddMovie extends React.Component {
 								<i className="fas fa-plus" />
 							</Link> */}
 							<ModalFooter>
-								<Button type="submit" color="primary">
-									Add Movie
+								<Button type="submit" color="danger">
+									 Add Movie
 								</Button>{' '}
 								<Button color="secondary" onClick={this.toggle}>
 									Cancel

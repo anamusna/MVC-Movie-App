@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/MoviesList.css';
-import MovieCard from './MovieCard';
+import MovieCardWellcome from './MovieCardWellcome';
 import axios from 'axios';
 import Genres from './Genres';
 import Rating from './Rating';
@@ -8,13 +8,13 @@ import { Redirect } from 'react-router-dom';
 import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
 let genres = Genres;
 
-class MoviesList extends Component {
+class MoviesListWellcome extends Component {
 	constructor(props) {
 		super(props);
 		this.changeRating = this.changeRating.bind(this);
 		this.searchByGenre.bind(this);
 		this.searchByTitle.bind(this);
-		this.removeMovie.bind(this);
+		
 		this.state = {
 			movies       : [],
 			searchRating : 0,
@@ -36,23 +36,7 @@ class MoviesList extends Component {
 			console.log(this.state.movies);
 		});
 	}
-	//Edit a movie
-
-	editMovie = (id) => {
-		console.log(id);
-		axios.get('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
-		console.log('it works with edit!');
-	};
-
-	//Delete a movie
-
-	removeMovie = (id) => {
-		console.log(id);
-		axios.delete('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
-		this.setState({
-			deleted:true
-		})
-	};
+	
 
 	title;
 	newRating;
@@ -165,15 +149,15 @@ class MoviesList extends Component {
                         </div>
                         </div>
 					</div>
-					   <div className="all-movies-list">
+					 <div className="all-movies-list">
 						{this.state.movies.map((movie, index) => {
-							return <MovieCard movie={movie} key={index} removeMovie={this.removeMovie} />;
+							return <MovieCardWellcome movie={movie} key={index} removeMovie={this.removeMovie} />;
 						})}
-					</div>  
+					</div>   
 				
 			</div>
 		);
 	}
 }
 
-export default MoviesList;
+export default MoviesListWellcome;

@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class List extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			movies : []
+			movies : [],
+			deleted:false
 		};
 	}
 
@@ -36,6 +38,9 @@ class List extends React.Component {
 	};
 
 	render() {
+		if (this.state.deleted === true) {
+			return <Redirect to="/home" />
+		}
 		let movies = this.state.movies.map((e) => (
 			<ul onClick={this.editMovie}>
 				<li data-id={e.id}>{e.title}</li>

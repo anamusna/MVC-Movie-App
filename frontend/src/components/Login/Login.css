@@ -1,4 +1,19 @@
+
+
+#form-login {
+	padding: 0px !important;
+	margin: 30px auto;
+	max-width: 60% !important;
+	
+}
+#tabs{
+
+	margin-top: 20px !important;
+	
+}
+
 .social-login {
+	max-width: 60%;
 	margin: 10px auto;
 	padding-top: 10px !important;
 	justify-content: space-around;
@@ -6,4 +21,10 @@
 .signup-text {
 	max-width: 60%;
 	margin: auto;
+}
+.MuiButton-extendedFab-71 {
+	text-align: center !important;
+	max-width: 50% !important;
+	height: 50% !important;
+	margin: 10px auto !important;
 }

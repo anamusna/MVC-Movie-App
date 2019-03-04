@@ -3,6 +3,7 @@ import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import Header from '../Header/Header';
 
 import './Login.css';
 
@@ -56,7 +57,10 @@ class Login extends Component {
 			return <Redirect to="/home" />;
 		}
 		return (
+			<div>
+				<Header />
 			<div id="tabs" className="medium-5 columns left bm-center-content row">
+			
 				<form id="form-login" className="col" onSubmit={this.onUserSubmit}>
 					<FormControl fullWidth className="row">
 						<InputLabel>Username</InputLabel>
@@ -106,6 +110,7 @@ class Login extends Component {
 						</a>
 					</div>
 				</form>
+			</div>
 			</div>
 		);
 	}

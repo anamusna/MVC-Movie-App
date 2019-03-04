@@ -1,0 +1,33 @@
+
+
+.navbar{
+   
+    display: flex;
+    text-align: center !important;
+    background-color: rgb(32, 29, 29);
+}
+.navbutton {
+   
+    font-size: 18px;
+    font-style: inherit;
+    position: relative;
+    /* right: 100px; */
+    color: aliceblue !important;
+}
+
+
+.navbar-header {
+    font-size: 30px !important;
+    margin-left: 10px;
+    justify-content: space-between;
+    color: rgb(255, 255, 255) !important;
+    text-align: left !important;
+}
+.all-movies-list {
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    margin: auto;
+    width: 90vw;
+}

@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const usersSchema = require('../models/Users');
-const User = require('../models/Users')
+const User = require('../models/Users');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+var config = require('../config');
+
 
 
 const userController = {}
@@ -86,8 +89,21 @@ userController.check = (req, res) => {
                     });
                 }
                 if (result) {
+                    const token = jwt.sign(
+                        {
+                        username: user[0].username,
+                        userId: user[0]._id
+                    },
+                        config.secret,
+                    {
+                        expiresIn: '1h'
+                        
+                    }
+                    );
                     return res.status(200).json({
-                        message: 'signin successful'
+                        message: 'signin successful',
+
+                        token: token
                     });
                 }
                 res.status(401).json({

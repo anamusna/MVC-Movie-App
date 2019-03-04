@@ -1,5 +1,6 @@
 import React from 'react';
 import MoviesList from './MoviesList';
+
 import './css/home.css';
 import UserHead from '../Header/UserHead';
 import AddMovie from './AddMovie';
@@ -37,7 +38,8 @@ class Home extends React.Component {
 				<div className="movie-frame">
 					<AddMovie addMovieFunction={(value) => this.onAddMoviePressed(value)} />
 				</div>
-				<MoviesList />
+				<MoviesList /> 
+				
 			</div>
 		);
 	}

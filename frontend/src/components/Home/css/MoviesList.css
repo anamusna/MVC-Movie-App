@@ -20,6 +20,7 @@ input {
 	font-weight: 100;
 }
 .add {
+	/* border:solid red 1px; */
 	padding: 10px;
 	margin: 0 3px;
 }
@@ -29,10 +30,19 @@ input {
 }
 
 .genres {
-	margin: auto;
-	text-align: center;
-	width: 100vw !important;
+	padding: 10px;
+	display: flex;
+	margin: 0;
+	justify-content: space-between;
+	width: 100% !important;
+	height: 100px;
 }
+.genres-list-input {
+	height: 30px;
+	margin-left: 105px;
+	max-width: 300px !important;
+}
+
 .genres-list {
 	margin: auto 30%;
 
@@ -51,10 +61,13 @@ input {
 .genres-list span:hover {
 	color: green !important;
 }
-.movies-list-header {
-	max-width: 400px;
-	margin: auto;
-}
+ .movies-list-header {
+	float: right;
+	margin-right: 105px;
+} 
 .search-input {
-	margin: auto;
+	max-width: 300px;
+	border-radius: 5px !important;
+	margin: 0;
+	height: 30px;
 }

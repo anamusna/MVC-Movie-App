@@ -1,5 +1,7 @@
 import React from 'react';
+import film from './film.png';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import './header.css';
 
 class Header extends React.Component {
 	constructor(props) {
@@ -18,13 +20,22 @@ class Header extends React.Component {
 	render() {
 		return (
 			<div>
-				<Navbar color="light" light expand="md" style={{ width: '100vw' }}>
-					<NavbarBrand href="/">Movie App</NavbarBrand>
+			
+				<Navbar  className ="navbar"  light expand="md" style={{ width: '100vw' }}>
+					<NavbarBrand href="/"><img className="App-logo" src={film} alt=""/><a className="navbar-header" href="/">Movie recommendation</a></NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
+						<NavItem>
+					
+							
+								<NavLink className="navbutton" href="/" /* class="btn btn-outline-secondary" */>
+									Home
+								</NavLink>
+							</NavItem>&nbsp;
 							<NavItem>
-								<NavLink href="/login" className="btn btn-outline-secondary">
+							
+								<NavLink className="navbutton" href="/login" /* class="btn btn-outline-secondary" */>
 									Login
 								</NavLink>
 							</NavItem>
