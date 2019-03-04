@@ -5,13 +5,13 @@ import './Footer.css';
 class Footer extends Component {
 	render() {
 		return (
-			<div className="center row justify-content-center fixed-bottom" id="footer">
+			<div className="center row justify-content-center bottom" id="footer">
 				<div className="medium-12 columns">
 					<br />
-					<br />
-					<p>
-						(C)2019 <a href="/home">Ansu/Daniel</a>
-					</p>
+
+					<span>
+						(C)2019 <a href="#">Ansu/Daniel</a>
+					</span>
 				</div>
 			</div>
 		);

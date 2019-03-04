@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import './css/MoviesList.css';
 import MovieCard from './MovieCard';
 import axios from 'axios';
-import Genres from './Genres';
+
 import Rating from './Rating';
 import { Label, Input /* FormText  */ } from 'reactstrap';
-let genres = Genres;
 
 class MoviesList extends Component {
 	constructor(props) {
@@ -20,8 +19,7 @@ class MoviesList extends Component {
 			minRating    : 0,
 			newRating    : undefined,
 			title        : undefined,
-			deleted      : false,
-			genres       : false
+			deleted      : false
 		};
 	}
 
@@ -46,7 +44,6 @@ class MoviesList extends Component {
 	//Delete a movie
 
 	removeMovie = (id) => {
-		alert('Are u sure to delete');
 		console.log(id);
 		axios.delete('http://localhost:3001/api/movies/?id=' + id).then((res) => console.log(res));
 		this.setState({
@@ -94,13 +91,16 @@ class MoviesList extends Component {
 		this.filter();
 	};
 
-	searchByGenre = (movie) => {
+	searchByGenre = (e) => {
+		let genres = e.target.value;
+
 		this.setState({
-			genres : !movie.includes('All')
-				? this.state.movies.filter((movie) => String(movie.genres).toLowerCase())
-				: this.state.movies.genres
+			movies : !genres.includes('All Movies')
+				? this.state.movies.filter((genres) => String(genres).toLowerCase())
+				: this.state.movies
 		});
-		console.log('oops', movie);
+
+		console.log('oops', genres);
 	};
 
 	render() {
@@ -118,11 +118,10 @@ class MoviesList extends Component {
 							type="select"
 							name="genre"
 							id="genre"
-							value={genres}
-							onChange={this.onChange}
+							value={this.state.genres}
+							onChange={(e) => this.searchByGenre(e)}
 						>
-							<option>Genre</option>
-							<option>All</option>
+							<option>All Movies</option>
 							<option>Action</option>
 							<option>Drama</option>
 							<option>Romance</option>

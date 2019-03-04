@@ -19,14 +19,9 @@ input {
 	text-indent: 10px;
 	font-weight: 100;
 }
-.add {
-	/* border:solid red 1px; */
-	padding: 10px;
-	margin: 0 3px;
-}
 
-.add:hover {
-	transform: scale(1.05);
+.addbutton:hover {
+	transform: skew(0deg, 10deg);
 }
 
 .genres {

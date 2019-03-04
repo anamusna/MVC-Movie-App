@@ -18,7 +18,7 @@ const Rating = ({ count, onChangeRating = () => {} }) => {
 		}
 	}
 	return (
-		<div>
+		<div className="stars">
 			<span>search by rate: </span>
 			{stars}
 		</div>

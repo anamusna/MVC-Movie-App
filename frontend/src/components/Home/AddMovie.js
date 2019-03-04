@@ -101,7 +101,7 @@ class AddMovie extends React.Component {
 		const { title, description, genre, rating } = this.state;
 
 		return (
-			<div>
+			<div className="add-button">
 				<div className="add">
 					<div data-toggle="modal" data-target="/new" onClick={this.toggle} />
 					<button onClick={this.toggle} className="addbutton">
@@ -197,10 +197,10 @@ class AddMovie extends React.Component {
 								<i className="fas fa-plus" />
 							</Link> */}
 							<ModalFooter>
-								<Button type="submit" color="danger">
+								<Button color="null" type="submit" className="btn btn-outline-success">
 									Add Movie
 								</Button>{' '}
-								<Button color="secondary" onClick={this.toggle}>
+								<Button color="null" className="btn btn-outline-secondary" onClick={this.toggle}>
 									Cancel
 								</Button>
 							</ModalFooter>

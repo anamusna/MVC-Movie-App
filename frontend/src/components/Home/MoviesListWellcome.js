@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import './css/MoviesList.css';
 import MovieCardWellcome from './MovieCardWellcome';
 import axios from 'axios';
-import Genres from './Genres';
 import Rating from './Rating';
 import { Label, Input } from 'reactstrap';
-let genres = Genres;
 
 class MoviesListWellcome extends Component {
 	constructor(props) {
@@ -76,13 +74,16 @@ class MoviesListWellcome extends Component {
 		this.filter();
 	};
 
-	searchByGenre = (movie) => {
+	searchByGenre = (e) => {
+		let genres = e.target.value;
+
 		this.setState({
-			genres : !movie.includes('All')
-				? this.state.movies.filter((movie) => String(movie.genres).toLowerCase())
-				: this.state.movies.genres
+			movies : !genres.includes('All Movies')
+				? this.state.movies.filter((genres) => String(genres).toLowerCase())
+				: this.state.movies
 		});
-		console.log('oops', movie);
+
+		console.log('oops', genres);
 	};
 
 	render() {
@@ -100,11 +101,10 @@ class MoviesListWellcome extends Component {
 							type="select"
 							name="genre"
 							id="genre"
-							value={genres}
-							onChange={this.onChange}
+							value={this.state.genres}
+							onChange={(e) => this.searchByGenre(e)}
 						>
-							<option>Genre</option>
-							<option>All</option>
+							<option>All Movies</option>
 							<option>Action</option>
 							<option>Drama</option>
 							<option>Romance</option>

@@ -49,7 +49,9 @@ code {
 		transform: rotate(360deg);
 	}
 }
-
+.stars {
+	color: white !important;
+}
 Form Button {
 	outline: 0 !important;
 }
@@ -109,7 +111,6 @@ Button {
 }
 Form Label {
 	text-transform: uppercase;
-	color: #a8acb9;
 	font-size: 0.84375rem;
 	padding-left: 21px;
 	width: 100%;
