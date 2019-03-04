@@ -2,14 +2,14 @@ import React from 'react';
 import './css/addMovie.css';
 //import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
 
 class AddMovie extends React.Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			movies      : [],
 			title       : '',
@@ -18,8 +18,7 @@ class AddMovie extends React.Component {
 			rating      : 0,
 			image       : {},
 			modal       : false,
-			added		: false
-			
+			added       : false
 		};
 		console.log(this.state.rating);
 		this.toggle = this.toggle.bind(this);
@@ -77,7 +76,6 @@ class AddMovie extends React.Component {
 			headers : {
 				'content-type' : 'multipart/form-data'
 			}
-			
 		};
 
 		console.log(formData, this.state);
@@ -86,41 +84,30 @@ class AddMovie extends React.Component {
 			.then((response) => {
 				if (response) {
 					this.setState({
-						added: true
-					})
-					return response 
+						added : true
+					});
+					return response;
 				}
-				
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-
-			
-				
-			
-			
 	};
-	
 
 	render() {
 		if (this.state.added === true) {
-			
-			window.location.reload(); 
+			window.location.reload();
 		}
 		const { title, description, genre, rating } = this.state;
 
 		return (
 			<div>
 				<div className="add">
-					<div data-toggle="modal" data-target="/new" onClick={this.toggle}>
-					
-					
-						
-					</div>
-					<button onClick={this.toggle} className="addbutton">Add New Movie</button>
+					<div data-toggle="modal" data-target="/new" onClick={this.toggle} />
+					<button onClick={this.toggle} className="addbutton">
+						Add New Movie
+					</button>
 				</div>
-				
 
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 					<ModalHeader toggle={this.toggle}>Add your movie here</ModalHeader>
@@ -211,7 +198,7 @@ class AddMovie extends React.Component {
 							</Link> */}
 							<ModalFooter>
 								<Button type="submit" color="danger">
-									 Add Movie
+									Add Movie
 								</Button>{' '}
 								<Button color="secondary" onClick={this.toggle}>
 									Cancel

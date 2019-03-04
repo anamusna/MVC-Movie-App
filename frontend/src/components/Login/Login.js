@@ -59,58 +59,58 @@ class Login extends Component {
 		return (
 			<div>
 				<Header />
-			<div id="tabs" className="medium-5 columns left bm-center-content row">
-			
-				<form id="form-login" className="col" onSubmit={this.onUserSubmit}>
-					<FormControl fullWidth className="row">
-						<InputLabel>Username</InputLabel>
-						<Input
-							type="text"
-							name="username"
-							id="username"
-							placeholder="email@example.com"
-							onChange={this.onChange}
-							required
-						/>
-					</FormControl>
-					<FormControl fullWidth className="row">
-						<InputLabel>Password</InputLabel>
-						<Input
-							id="password"
-							type="password"
-							name="password"
-							placeholder="enter password"
-							onChange={this.onChange}
-							required
-						/>
-					</FormControl>
-					<FormControl fullWidth className="row">
-						<span style={{ float: 'right', textAlign: 'right', color: 'white' }}>
-							<a id="" href="/">
-								Forgotten password?
+				<div id="tabs" className="medium-5 columns left bm-center-content row">
+					<form id="form-login" className="col" onSubmit={this.onUserSubmit}>
+						<FormControl fullWidth className="row">
+							<InputLabel>Username</InputLabel>
+							<Input
+								style={{ background: 'white !important' }}
+								type="text"
+								name="username"
+								id="username"
+								placeholder="email@example.com"
+								onChange={this.onChange}
+								required
+							/>
+						</FormControl>
+						<FormControl fullWidth className="row">
+							<InputLabel>Password</InputLabel>
+							<Input
+								id="password"
+								type="password"
+								name="password"
+								placeholder="enter password"
+								onChange={this.onChange}
+								required
+							/>
+						</FormControl>
+						<FormControl fullWidth className="row">
+							<span style={{ float: 'right', textAlign: 'right', color: 'white' }}>
+								<a id="" href="/">
+									Forgotten password?
+								</a>
+							</span>
+
+							<Button type="submit" variant="extendedFab" className="btn-outline-success">
+								Login
+							</Button>
+						</FormControl>
+
+						<div className="social-login">
+							<FacebookLoginButton iconSize="20px" size="40px" onClick={() => alert('Hello')}>
+								<span style={{ fontSize: 15 }}>Login with facebook</span>
+							</FacebookLoginButton>
+							<GoogleLoginButton iconSize="20px" size="40px" onClick={() => alert('Hello')}>
+								<span style={{ fontSize: 15 }}>Login with google</span>
+							</GoogleLoginButton>
+						</div>
+						<div className="signup-text">
+							<a href="/signup" className="btn btn-outline-info">
+								Don't have an account sign up here
 							</a>
-						</span>
-
-						<Button type="submit" variant="extendedFab" className="btn-success">
-							Login
-						</Button>
-					</FormControl>
-
-					<div className="social-login">
-						<FacebookLoginButton iconSize="20px" size="40px" onClick={() => alert('Hello')}>
-							<span style={{ fontSize: 15 }}>Login with facebook</span>
-						</FacebookLoginButton>
-						<GoogleLoginButton iconSize="20px" size="40px" onClick={() => alert('Hello')}>
-							<span style={{ fontSize: 15 }}>Login with google</span>
-						</GoogleLoginButton>
-					</div>
-					<div className="signup-text">
-						<a href="/signup" className="btn btn-outline-info">
-							You dont have an account sign up here
-						</a>
-					</div>
-				</form>
-			</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		);
 	}

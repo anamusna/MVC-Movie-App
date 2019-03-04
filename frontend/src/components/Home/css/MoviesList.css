@@ -61,10 +61,10 @@ input {
 .genres-list span:hover {
 	color: green !important;
 }
- .movies-list-header {
+.movies-list-header {
 	float: right;
 	margin-right: 105px;
-} 
+}
 .search-input {
 	max-width: 300px;
 	border-radius: 5px !important;

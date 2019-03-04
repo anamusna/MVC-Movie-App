@@ -1,11 +1,7 @@
 import React from 'react';
-import './css/addMovie.css';
-import { Link, Redirect } from 'react-router-dom';
-
 import axios from 'axios';
-//import { Link, Redirect } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 class EditMovie extends React.Component {
 	constructor(props) {
@@ -91,7 +87,6 @@ class EditMovie extends React.Component {
 	};
 
 	render() {
-		const { title, description, genre, rating } = this.state;
 		return (
 			<div>
 				<div className="add">

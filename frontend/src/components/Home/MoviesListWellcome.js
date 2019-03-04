@@ -4,8 +4,7 @@ import MovieCardWellcome from './MovieCardWellcome';
 import axios from 'axios';
 import Genres from './Genres';
 import Rating from './Rating';
-import { Redirect } from 'react-router-dom';
-import { Form, FormGroup, Label, Input /* FormText  */ } from 'reactstrap';
+import { Label, Input } from 'reactstrap';
 let genres = Genres;
 
 class MoviesListWellcome extends Component {
@@ -14,15 +13,15 @@ class MoviesListWellcome extends Component {
 		this.changeRating = this.changeRating.bind(this);
 		this.searchByGenre.bind(this);
 		this.searchByTitle.bind(this);
-		
+
 		this.state = {
 			movies       : [],
 			searchRating : 0,
 			minRating    : 0,
 			newRating    : undefined,
 			title        : undefined,
-			deleted:false,
-			genres: false
+			deleted      : false,
+			genres       : false
 		};
 	}
 
@@ -36,7 +35,6 @@ class MoviesListWellcome extends Component {
 			console.log(this.state.movies);
 		});
 	}
-	
 
 	title;
 	newRating;
@@ -89,72 +87,66 @@ class MoviesListWellcome extends Component {
 
 	render() {
 		if (this.state.deleted === true) {
-			
-			
-				window.location.reload(); 
-			
+			window.location.reload();
 		}
-		
+
 		return (
 			<div className="list">
 				<div className="genres">
-					
-					 <Label for="genre">
-								<Input className="genres-list-input"
-									required
-									type="select"
-									name="genre"
-									id="genre"
-									value={genres}
-									onChange={this.onChange}
-								>
-                                    <option>Genre</option>
-                                    <option>All</option>
-									<option>Action</option>
-									<option>Drama</option>
-									<option>Romance</option>
-									<option>Thriller</option>
-									<option>Animation</option>
-									<option>Sci-Fi</option>
-									<option>Horror</option>
-									<option>Adventure</option>
-								</Input> 
-                                </Label>
-                                
+					<Label for="genre">
+						<Input
+							className="genres-list-input"
+							required
+							type="select"
+							name="genre"
+							id="genre"
+							value={genres}
+							onChange={this.onChange}
+						>
+							<option>Genre</option>
+							<option>All</option>
+							<option>Action</option>
+							<option>Drama</option>
+							<option>Romance</option>
+							<option>Thriller</option>
+							<option>Animation</option>
+							<option>Sci-Fi</option>
+							<option>Horror</option>
+							<option>Adventure</option>
+						</Input>
+					</Label>
 
-					    {/* <div className="genres-list">
+					{/* <div className="genres-list">
 						{genres.map((movie, index) => (
 							<span key={index} onClick={(e) => this.searchByGenre(movie)}>
 								{movie}
 							</span>
 						))}
 					    </div> */}
-				   
-				    <div className="movies-list">
-					    <div className="movies-list-header">
-						    <input
-							className="search-input"
-							type="text"
-							placeholder="Search your movie..."
-							onChange={(e) => this.searchByTitle(e.target.value)}
-						/>
-                        
 
-						<div>
-							<Rating
-								rating={this.state.minRating}
-								onChangeRating={(newRating) => this.changeRating(newRating)}
+					<div className="movies-list">
+						<div className="movies-list-header">
+							<input
+								className="search-input"
+								type="text"
+								placeholder="Search your movie..."
+								onChange={(e) => this.searchByTitle(e.target.value)}
 							/>
+
+							<div>
+								<Rating
+									rating={this.state.minRating}
+									onChangeRating={(newRating) => this.changeRating(newRating)}
+								/>
+							</div>
 						</div>
-                        </div>
-                        </div>
 					</div>
-					 <div className="all-movies-list">
-						{this.state.movies.map((movie, index) => {
-							return <MovieCardWellcome movie={movie} key={index} removeMovie={this.removeMovie} />;
-						})}
-					</div>   
-				
+				</div>
+				<div className="all-movies-list">
+					{this.state.movies.map((movie, index) => {
+						return <MovieCardWellcome movie={movie} key={index} removeMovie={this.removeMovie} />;
+					})}
+				</div>
 			</div>
 		);
 	}
