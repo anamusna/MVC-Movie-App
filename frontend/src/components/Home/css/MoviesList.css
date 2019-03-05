@@ -25,6 +25,9 @@ input {
 }
 
 .genres {
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
 	padding: 10px;
 	display: flex;
 	margin: 0;
@@ -38,9 +41,11 @@ input {
 	max-width: 300px !important;
 }
 
-.genres-list {
-	margin: auto 30%;
-
+.filterGenre {
+	align-items: center;
+	cursor: pointer;
+}
+.movies-list {
 	align-items: center;
 	cursor: pointer;
 }
@@ -61,7 +66,7 @@ input {
 	margin-right: 105px;
 }
 .search-input {
-	max-width: 300px;
+	max-width: 300px !important;
 	border-radius: 5px !important;
 	margin: 0;
 	height: 30px;

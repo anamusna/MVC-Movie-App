@@ -20,7 +20,6 @@ class Login extends Component {
 
 	onChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
-		console.log(e.target.value);
 	};
 
 	onUserSubmit = (e) => {
@@ -40,12 +39,9 @@ class Login extends Component {
 		axios
 			.post('http://localhost:3001/api/users/signin', userData, config)
 			.then((response) => {
-				console.log(response);
-
 				this.setState({
 					userLoggedIn : true
 				});
-				console.log(this.state);
 			})
 			.catch((error) => {
 				console.log(error.response);

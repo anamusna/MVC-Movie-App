@@ -22,25 +22,27 @@ class UserHead extends React.Component {
 
 	render() {
 		return (
-			<Navbar className="navbar" light expand="md" style={{ width: '100vw' }}>
-				<NavbarBrand href="/">
-					<img className="App-logo" src={film} alt="" />
-					<a className="navbar-header" href="/">
-						Movie recommendation
-					</a>
-				</NavbarBrand>
-				<NavbarToggler onClick={this.toggle} />
-				<Collapse isOpen={this.state.isOpen} navbar>
-					<Nav className="ml-auto" navbar>
-						<NavLink className="navbutton" href="/home" /* className="btn " */>
-							Profile
-						</NavLink>
-						<NavLink className="navbutton" href="/" /* className="btn" */>
-							Logout
-						</NavLink>
-					</Nav>
-				</Collapse>
-			</Navbar>
+			<div className="">
+				<Navbar className="navbar" light expand="md" style={{ width: '100vw' }}>
+					<NavbarBrand href="/">
+						<img className="App-logo" src={film} alt="" />
+						<a className="navbar-header" href="/">
+							Movie recommendation
+						</a>
+					</NavbarBrand>
+					<NavbarToggler onClick={this.toggle} />
+					<Collapse isOpen={this.state.isOpen} navbar>
+						<Nav className="ml-auto" navbar>
+							<NavLink className="navbutton" href="/home" /* className="btn " */>
+								Profile
+							</NavLink>
+							<NavLink className="navbutton" href="/" /* className="btn" */>
+								Logout
+							</NavLink>
+						</Nav>
+					</Collapse>
+				</Navbar>
+			</div>
 		);
 	}
 }

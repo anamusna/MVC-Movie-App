@@ -109,37 +109,39 @@ class MoviesList extends Component {
 		}
 
 		return (
-			<div className="list">
+			<div>
 				<div className="genres">
-					<Label for="genre">
-						<Input
-							className="genres-list-input"
-							required
-							type="select"
-							name="genre"
-							id="genre"
-							value={this.state.genres}
-							onChange={(e) => this.searchByGenre(e)}
-						>
-							<option>All Movies</option>
-							<option>Action</option>
-							<option>Drama</option>
-							<option>Romance</option>
-							<option>Thriller</option>
-							<option>Animation</option>
-							<option>Sci-Fi</option>
-							<option>Horror</option>
-							<option>Adventure</option>
-						</Input>
-					</Label>
+					<div className="filterGenre">
+						<Label for="genre">
+							<Input
+								className="genres-list-input"
+								required
+								type="select"
+								name="genre"
+								id="genre"
+								value={this.state.genres}
+								onChange={(e) => this.searchByGenre(e)}
+							>
+								<option>All Movies</option>
+								<option>Action</option>
+								<option>Drama</option>
+								<option>Romance</option>
+								<option>Thriller</option>
+								<option>Animation</option>
+								<option>Sci-Fi</option>
+								<option>Horror</option>
+								<option>Adventure</option>
+							</Input>
+						</Label>
 
-					{/* <div className="genres-list">
+						{/* <div className="genres-list">
 						{genres.map((movie, index) => (
 							<span key={index} onClick={(e) => this.searchByGenre(movie)}>
 								{movie}
 							</span>
 						))}
 					    </div> */}
+					</div>
 
 					<div className="movies-list">
 						<div className="movies-list-header">
