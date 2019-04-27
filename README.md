@@ -12,10 +12,10 @@
 
 
 ## cd backend
-## mongod start
-## node index.js
+### mongod start
+### node index.js
 
 
 ## cd frontend
-## npm install
-## npm run
+### npm install
+### npm run
